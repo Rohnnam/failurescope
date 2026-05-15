@@ -39,7 +39,7 @@ git clone https://github.com/Rohnnam/failurescope
 cd failurescope
 
 # Start (Ollama must be running on host)
-docker-compose up --build
+docker compose up --build
 
 # Open browser
 http://localhost:8080
