@@ -1,0 +1,16 @@
+
+services:
+  failurescope:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"           # Access at http://localhost:8080
+    volumes:
+      - /opt/failurescope_data:/opt/failurescope_data:ro   # read-only: models already trained
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # allows reaching Ollama on host
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - OLLAMA_MODEL=mistral:7b
+    restart: unless-stopped

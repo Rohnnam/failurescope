@@ -1,0 +1,1 @@
+# FailureScope Layer 4 — Failure Mode Discovery + NTSB Validation

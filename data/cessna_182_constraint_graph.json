@@ -1,0 +1,1151 @@
+{
+  "aircraft_type": "cessna_182",
+  "aircraft_model": "182Q",
+  "engine_model": "Continental O-470-U",
+  "built_from": [
+    "Cessna 182Q POH (1977) D1087-13-RPC-300-2/92",
+    "Cessna 182 Service Manual D2006R4-13 (1969-1976)",
+    "Continental O-470-U Engine Specification (Type Certificate E-273)",
+    "FAA AC 43.13-1B Acceptable Methods, Techniques, and Practices"
+  ],
+  "physics_cache_version": "2026-04-28T12:24:03.828289",
+  "nodes": {
+    "alternator": {
+      "node_id": "alternator",
+      "display_name": "Engine-Driven Alternator",
+      "system": "electrical",
+      "status": "normal",
+      "nominal_value": 60.0,
+      "current_value": 60.0,
+      "unit": "amps",
+      "min_operating": 0.0,
+      "max_operating": 60.0,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 101
+    },
+    "battery": {
+      "node_id": "battery",
+      "display_name": "Aircraft Battery (12V)",
+      "system": "electrical",
+      "status": "normal",
+      "nominal_value": 33.0,
+      "current_value": 33.0,
+      "unit": "ampere-hours",
+      "min_operating": 0.0,
+      "max_operating": 33.0,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 248
+    },
+    "electrical_bus": {
+      "node_id": "electrical_bus",
+      "display_name": "Main Electrical Bus",
+      "system": "electrical",
+      "status": "normal",
+      "nominal_value": 14.0,
+      "current_value": 14.0,
+      "unit": "volts",
+      "min_operating": 10.5,
+      "max_operating": 16.0,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 134
+    },
+    "voltage_regulator": {
+      "node_id": "voltage_regulator",
+      "display_name": "Voltage Regulator",
+      "system": "electrical",
+      "status": "normal",
+      "nominal_value": 14.0,
+      "current_value": 14.0,
+      "unit": "volts",
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 38
+    },
+    "fuel_tank_left": {
+      "node_id": "fuel_tank_left",
+      "display_name": "Left Fuel Tank",
+      "system": "fuel",
+      "status": "normal",
+      "nominal_value": 30.5,
+      "current_value": 30.5,
+      "unit": "gallons",
+      "min_operating": 0.0,
+      "max_operating": 30.5,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 9
+    },
+    "fuel_tank_right": {
+      "node_id": "fuel_tank_right",
+      "display_name": "Right Fuel Tank",
+      "system": "fuel",
+      "status": "normal",
+      "nominal_value": 30.5,
+      "current_value": 30.5,
+      "unit": "gallons",
+      "min_operating": 0.0,
+      "max_operating": 30.5,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 9
+    },
+    "fuel_selector": {
+      "node_id": "fuel_selector",
+      "display_name": "Fuel Selector Valve",
+      "system": "fuel",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 12
+    },
+    "fuel_pump": {
+      "node_id": "fuel_pump",
+      "display_name": "Electric Fuel Pump",
+      "system": "fuel",
+      "status": "normal",
+      "nominal_value": 1.0,
+      "current_value": 1.0,
+      "unit": "efficiency_ratio",
+      "min_operating": 10.5,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 128
+    },
+    "fuel_strainer": {
+      "node_id": "fuel_strainer",
+      "display_name": "Fuel Strainer",
+      "system": "fuel",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 12
+    },
+    "engine": {
+      "node_id": "engine",
+      "display_name": "Continental O-470-U Engine",
+      "system": "engine",
+      "status": "normal",
+      "nominal_value": 2400.0,
+      "current_value": 2400.0,
+      "unit": "RPM",
+      "min_operating": 600.0,
+      "max_operating": 2400.0,
+      "source_doc": "Continental O-470-U Engine Specification (Type Certificate E-273)",
+      "source_page": null
+    },
+    "carburetor": {
+      "node_id": "carburetor",
+      "display_name": "Carburetor (MA-4-5)",
+      "system": "engine",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Continental O-470-U Engine Specification (Type Certificate E-273)",
+      "source_page": null
+    },
+    "magnetos": {
+      "node_id": "magnetos",
+      "display_name": "Dual Magnetos",
+      "system": "engine",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 17
+    },
+    "vacuum_pump": {
+      "node_id": "vacuum_pump",
+      "display_name": "Engine-Driven Vacuum Pump",
+      "system": "engine",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 109
+    },
+    "thrust": {
+      "node_id": "thrust",
+      "display_name": "Propeller Thrust",
+      "system": "aerodynamics",
+      "status": "normal",
+      "nominal_value": 230.0,
+      "current_value": 230.0,
+      "unit": "BHP",
+      "min_operating": 0.0,
+      "max_operating": 230.0,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 4
+    },
+    "flight_dynamics": {
+      "node_id": "flight_dynamics",
+      "display_name": "Aircraft Flight State",
+      "system": "aerodynamics",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": null
+    },
+    "attitude_indicator": {
+      "node_id": "attitude_indicator",
+      "display_name": "Attitude Indicator (Vacuum)",
+      "system": "instruments",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 143
+    },
+    "directional_indicator": {
+      "node_id": "directional_indicator",
+      "display_name": "Directional Indicator (Vacuum)",
+      "system": "instruments",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 143
+    },
+    "flaps": {
+      "node_id": "flaps",
+      "display_name": "Wing Flaps (Electric)",
+      "system": "flight_controls",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 109
+    },
+    "trim_system": {
+      "node_id": "trim_system",
+      "display_name": "Electric Trim System",
+      "system": "flight_controls",
+      "status": "normal",
+      "nominal_value": null,
+      "current_value": null,
+      "unit": null,
+      "min_operating": null,
+      "max_operating": null,
+      "source_doc": "Cessna Skylane 182Q Pilot's Operating Handbook",
+      "source_page": 109
+    }
+  },
+  "edges": [
+    {
+      "edge_id": "alternator_powers_bus",
+      "from_node": "alternator",
+      "to_node": "electrical_bus",
+      "edge_type": "powers",
+      "description": "Alternator charges battery and powers electrical bus at 14V",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "battery_powers_bus",
+      "from_node": "battery",
+      "to_node": "electrical_bus",
+      "edge_type": "powers",
+      "description": "Battery supplies 12V to bus when alternator unavailable",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "bus_powers_fuel_pump",
+      "from_node": "electrical_bus",
+      "to_node": "fuel_pump",
+      "edge_type": "powers",
+      "description": "Electrical bus powers electric fuel pump motor",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "bus_powers_flaps",
+      "from_node": "electrical_bus",
+      "to_node": "flaps",
+      "edge_type": "powers",
+      "description": "Electrical bus powers electric flap actuator",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "bus_powers_trim",
+      "from_node": "electrical_bus",
+      "to_node": "trim_system",
+      "edge_type": "powers",
+      "description": "Electrical bus powers electric trim system",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "voltage_regulator_controls_bus",
+      "from_node": "voltage_regulator",
+      "to_node": "electrical_bus",
+      "edge_type": "controls",
+      "description": "Voltage regulator maintains bus voltage at 14V",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "fuel_selector_supplies_strainer",
+      "from_node": "fuel_selector",
+      "to_node": "fuel_strainer",
+      "edge_type": "supplies",
+      "description": "Fuel selector routes fuel from selected tank to strainer",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "left_tank_supplies_selector",
+      "from_node": "fuel_tank_left",
+      "to_node": "fuel_selector",
+      "edge_type": "supplies",
+      "description": "Left tank supplies fuel to selector valve",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "right_tank_supplies_selector",
+      "from_node": "fuel_tank_right",
+      "to_node": "fuel_selector",
+      "edge_type": "supplies",
+      "description": "Right tank supplies fuel to selector valve",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "fuel_pump_supplies_carburetor",
+      "from_node": "fuel_pump",
+      "to_node": "carburetor",
+      "edge_type": "supplies",
+      "description": "Electric fuel pump delivers fuel to carburetor under pressure",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "strainer_supplies_pump",
+      "from_node": "fuel_strainer",
+      "to_node": "fuel_pump",
+      "edge_type": "supplies",
+      "description": "Filtered fuel flows from strainer to pump",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "carburetor_supplies_engine",
+      "from_node": "carburetor",
+      "to_node": "engine",
+      "edge_type": "supplies",
+      "description": "Carburetor delivers air-fuel mixture to engine cylinders",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "magnetos_controls_engine",
+      "from_node": "magnetos",
+      "to_node": "engine",
+      "edge_type": "controls",
+      "description": "Dual magnetos provide ignition spark independent of electrical system",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "engine_drives_alternator",
+      "from_node": "engine",
+      "to_node": "alternator",
+      "edge_type": "drives",
+      "description": "Engine crankshaft drives alternator via belt",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "engine_drives_vacuum_pump",
+      "from_node": "engine",
+      "to_node": "vacuum_pump",
+      "edge_type": "drives",
+      "description": "Engine drives vacuum pump for gyroscopic instruments",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "engine_produces_thrust",
+      "from_node": "engine",
+      "to_node": "thrust",
+      "edge_type": "produces",
+      "description": "Engine RPM drives propeller to produce thrust",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "vacuum_powers_attitude",
+      "from_node": "vacuum_pump",
+      "to_node": "attitude_indicator",
+      "edge_type": "powers",
+      "description": "Vacuum pump spins attitude indicator gyro",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "vacuum_powers_di",
+      "from_node": "vacuum_pump",
+      "to_node": "directional_indicator",
+      "edge_type": "powers",
+      "description": "Vacuum pump spins directional indicator gyro",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    },
+    {
+      "edge_id": "thrust_drives_flight",
+      "from_node": "thrust",
+      "to_node": "flight_dynamics",
+      "edge_type": "produces",
+      "description": "Thrust determines aircraft acceleration, climb/descent rate",
+      "transfer_rate": 1.0,
+      "source_doc": "Cessna 182Q POH"
+    }
+  ],
+  "cascade_rules": [
+    {
+      "rule_id": "R001_alternator_fail_voltage_drop",
+      "description": "When alternator fails, bus voltage drops from 14V to 12V (battery). Battery becomes sole power source. Discharge begins.",
+      "conditions": [
+        {
+          "node_id": "alternator",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "electrical_bus",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 12.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "battery",
+          "attribute": "status",
+          "operation": "set",
+          "value": "degraded",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 38,
+      "source_section": "Section 3 Emergency Procedures \u2014 Electrical Power Malfunctions",
+      "poh_quote": "A broken alternator drive belt or wiring is most likely the cause of alternator failures. Problems of this nature constitute an electrical emergency and should be dealt with immediately."
+    },
+    {
+      "rule_id": "R002_battery_discharge",
+      "description": "Battery discharges continuously when alternator is failed. At typical 15.0A load: ~132 min runtime.",
+      "conditions": [
+        {
+          "node_id": "alternator",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        },
+        {
+          "node_id": "battery",
+          "attribute": "current_value",
+          "operator": "gt",
+          "value": 0.0
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "battery",
+          "attribute": "current_value",
+          "operation": "subtract",
+          "value": 0.00012626262626262626,
+          "cascade_type": "gradual",
+          "rate_per_second": 0.00012626262626262626
+        }
+      ],
+      "source_doc": "Cessna 182 Service Manual D2006R4-13",
+      "source_page": 248,
+      "source_section": "Section 16 Electrical Systems \u2014 Battery",
+      "poh_quote": "The battery is 12-volts and is approximately 33 ampere hour capacity."
+    },
+    {
+      "rule_id": "R003_low_voltage_degrades_fuel_pump",
+      "description": "When bus voltage drops below 11.5V, electric fuel pump efficiency degrades by 20%. Fuel flow reduces proportionally.",
+      "conditions": [
+        {
+          "node_id": "electrical_bus",
+          "attribute": "current_value",
+          "operator": "lt",
+          "value": 11.5
+        },
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "normal"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "fuel_pump",
+          "attribute": "current_value",
+          "operation": "multiply",
+          "value": 0.8,
+          "cascade_type": "gradual",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operation": "set",
+          "value": "degraded",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "FAA AC 43.13-1B",
+      "source_page": null,
+      "source_section": "Section 11 Electrical Systems \u2014 12V Motor Minimum Operating Voltage",
+      "poh_quote": "The electric fuel pump requires adequate voltage for proper operation. Degraded voltage results in reduced pump efficiency and fuel flow."
+    },
+    {
+      "rule_id": "R004_critical_voltage_fuel_pump_fails",
+      "description": "When bus voltage drops below 10.5V (minimum operating), electric fuel pump fails completely. Engine loses fuel supply.",
+      "conditions": [
+        {
+          "node_id": "electrical_bus",
+          "attribute": "current_value",
+          "operator": "lt",
+          "value": 10.5
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "fuel_pump",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 0.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "FAA AC 43.13-1B",
+      "source_page": null,
+      "source_section": "Section 11 \u2014 Minimum operating voltage for 12V electrical motors",
+      "poh_quote": null
+    },
+    {
+      "rule_id": "R005_no_fuel_pump_engine_loses_power",
+      "description": "When fuel pump fails completely, engine loses fuel supply. Engine RPM drops proportionally to fuel flow reduction.",
+      "conditions": [
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        },
+        {
+          "node_id": "engine",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "normal"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "engine",
+          "attribute": "status",
+          "operation": "set",
+          "value": "degraded",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "engine",
+          "attribute": "current_value",
+          "operation": "multiply",
+          "value": 0.0,
+          "cascade_type": "gradual",
+          "rate_per_second": 50.0
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 27,
+      "source_section": "Section 3 Emergency Procedures \u2014 Engine Failure",
+      "poh_quote": "Engine failure during flight: (1) airspeed \u2014 maintain best glide. (2) fuel selector valve \u2014 switch tanks. (3) electric fuel pump \u2014 ON."
+    },
+    {
+      "rule_id": "R006_engine_stop_alternator_stops",
+      "description": "When engine stops (RPM = 0), alternator output drops to 0. Battery becomes sole power source if not already.",
+      "conditions": [
+        {
+          "node_id": "engine",
+          "attribute": "current_value",
+          "operator": "lte",
+          "value": 0.0
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "alternator",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 0.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "engine",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "thrust",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 0.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 27,
+      "source_section": "Section 3 Emergency Procedures",
+      "poh_quote": null
+    },
+    {
+      "rule_id": "R007_vacuum_pump_fail_gyros_fail",
+      "description": "When vacuum pump fails, attitude indicator and directional indicator become unreliable within 30-60 seconds (gyro rundown).",
+      "conditions": [
+        {
+          "node_id": "vacuum_pump",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "attitude_indicator",
+          "attribute": "status",
+          "operation": "set",
+          "value": "unreliable",
+          "cascade_type": "gradual",
+          "rate_per_second": 0.016
+        },
+        {
+          "node_id": "directional_indicator",
+          "attribute": "status",
+          "operation": "set",
+          "value": "unreliable",
+          "cascade_type": "gradual",
+          "rate_per_second": 0.016
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 34,
+      "source_section": "Section 3 Emergency Procedures \u2014 Instrument Failure",
+      "poh_quote": "The directional indicator and attitude indicator will be disabled, and the pilot will have to rely on the turn coordinator."
+    },
+    {
+      "rule_id": "R008_engine_fail_vacuum_fail",
+      "description": "Engine failure causes vacuum pump to stop. Gyroscopic instruments begin spinning down.",
+      "conditions": [
+        {
+          "node_id": "engine",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "vacuum_pump",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 34,
+      "source_section": "Section 7 Airplane & Systems Descriptions",
+      "poh_quote": null
+    },
+    {
+      "rule_id": "R009_degraded_fuel_pump_degrades_engine",
+      "description": "When fuel pump efficiency drops below 70%, engine RPM and power reduce proportionally.",
+      "conditions": [
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "degraded"
+        },
+        {
+          "node_id": "fuel_pump",
+          "attribute": "current_value",
+          "operator": "lt",
+          "value": 0.7
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "engine",
+          "attribute": "current_value",
+          "operation": "multiply",
+          "value": 0.9,
+          "cascade_type": "gradual",
+          "rate_per_second": 5.0
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 128,
+      "source_section": "Section 7 Airplane & Systems Descriptions \u2014 Fuel System",
+      "poh_quote": null
+    },
+    {
+      "rule_id": "R010_low_voltage_loses_electric_services",
+      "description": "When bus voltage is critically low, electric flaps and trim become inoperative. Pilot loses configuration control.",
+      "conditions": [
+        {
+          "node_id": "electrical_bus",
+          "attribute": "current_value",
+          "operator": "lt",
+          "value": 10.0
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "flaps",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "trim_system",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 135,
+      "source_section": "Section 7 \u2014 Circuit Breakers and Fuses",
+      "poh_quote": null
+    },
+    {
+      "rule_id": "R011_carburetor_fail_engine_roughness",
+      "description": "Carburetor failure or icing causes fuel-air mixture disruption. Engine loses power progressively, RPM drops, eventual engine stop.",
+      "conditions": [
+        {
+          "node_id": "carburetor",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "engine",
+          "attribute": "current_value",
+          "operation": "multiply",
+          "value": 0.0,
+          "cascade_type": "gradual",
+          "rate_per_second": 30.0
+        },
+        {
+          "node_id": "engine",
+          "attribute": "status",
+          "operation": "set",
+          "value": "degraded",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 36,
+      "source_section": "Section 3 Emergency Procedures \u2014 Carburetor Icing",
+      "poh_quote": "An unexplained drop in manifold pressure and eventual engine roughness may result from the formation of carburetor ice. To clear the ice, apply full throttle and pull the carburetor heat knob out."
+    },
+    {
+      "rule_id": "R012_fuel_selector_starvation",
+      "description": "Fuel selector on empty tank causes immediate fuel flow interruption. Engine loses fuel supply \u2192 stops within seconds.",
+      "conditions": [
+        {
+          "node_id": "fuel_selector",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "fuel_pump",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "fuel_pump",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 0.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182 Service Manual D2006R4-13",
+      "source_page": 184,
+      "source_section": "Section 12 Fuel System \u2014 Trouble Shooting",
+      "poh_quote": "NO FUEL FLOW TO CARBURETOR: Fuel selector valve not turned on \u2014 Turn valve on. Fuel cells empty \u2014 Service with proper grade and amount of fuel."
+    },
+    {
+      "rule_id": "R013_voltage_regulator_fail_alternator",
+      "description": "Voltage regulator failure causes alternator to overcharge or fail. Bus voltage becomes uncontrolled \u2192 same cascade as alternator failure.",
+      "conditions": [
+        {
+          "node_id": "voltage_regulator",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "alternator",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        },
+        {
+          "node_id": "electrical_bus",
+          "attribute": "current_value",
+          "operation": "set",
+          "value": 12.0,
+          "cascade_type": "immediate",
+          "rate_per_second": null
+        }
+      ],
+      "source_doc": "Cessna 182 Service Manual D2006R4-13",
+      "source_page": 257,
+      "source_section": "Section 16 Electrical Systems \u2014 Trouble Shooting Alternator",
+      "poh_quote": "ALTERNATOR OVERCHARGES BATTERY: Regulator faulty or improperly adjusted \u2014 Check bus voltage with engine running."
+    },
+    {
+      "rule_id": "R014_vacuum_fail_IMC_attitude_loss",
+      "description": "Vacuum pump failure in IMC causes attitude indicator and DI to fail. Without visual horizon reference, undetected spatial disorientation \u2192 spiral dive. Catastrophic in IMC, manageable in VMC.",
+      "conditions": [
+        {
+          "node_id": "vacuum_pump",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "failed"
+        },
+        {
+          "node_id": "attitude_indicator",
+          "attribute": "status",
+          "operator": "eq",
+          "value": "unreliable"
+        }
+      ],
+      "effects": [
+        {
+          "node_id": "attitude_indicator",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "gradual",
+          "rate_per_second": 0.016
+        },
+        {
+          "node_id": "directional_indicator",
+          "attribute": "status",
+          "operation": "set",
+          "value": "failed",
+          "cascade_type": "gradual",
+          "rate_per_second": 0.016
+        },
+        {
+          "node_id": "flight_dynamics",
+          "attribute": "status",
+          "operation": "set",
+          "value": "degraded",
+          "cascade_type": "gradual",
+          "rate_per_second": 0.008
+        }
+      ],
+      "source_doc": "Cessna 182Q POH",
+      "source_page": 141,
+      "source_section": "Section 7 Airplane & Systems Descriptions \u2014 Vacuum System",
+      "poh_quote": "The system consists of a vacuum pump mounted on the engine, a vacuum relief valve and vacuum system air filter... powers the attitude indicator and directional indicator."
+    }
+  ],
+  "spec_values": {
+    "aircraft_model": {
+      "value": "182q",
+      "unit": "string",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "engine_model": {
+      "value": "O-470-U",
+      "unit": "string",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "battery_capacity_ah": {
+      "value": 33,
+      "unit": "ampere-hours",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "corrected"
+    },
+    "engine_count": {
+      "value": 1,
+      "unit": "count",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "max_gross_weight_lbs": {
+      "value": 2950,
+      "unit": "lbs",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "faa_type_certificate": {
+      "value": "3a13",
+      "unit": "string",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "system_voltage": {
+      "value": 14,
+      "unit": "volts",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "corrected"
+    },
+    "alternator_output_amps": {
+      "value": 60,
+      "unit": "amps",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "fuel_capacity_total_gal": {
+      "value": 56,
+      "unit": "US gallons",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "fuel_capacity_left_gal": {
+      "value": 30.5,
+      "unit": "US gallons",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "fuel_capacity_right_gal": {
+      "value": 30.5,
+      "unit": "US gallons",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "cruise_fuel_flow_gph": {
+      "value": 11.0,
+      "unit": "GPH",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "max_rpm": {
+      "value": 2400,
+      "unit": "RPM",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "max_power_bhp": {
+      "value": 230,
+      "unit": "BHP",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "vne_knots": {
+      "value": 172,
+      "unit": "knots",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "vs0_knots": {
+      "value": 45,
+      "unit": "knots CAS",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "corrected"
+    },
+    "service_ceiling_ft": {
+      "value": "16,500",
+      "unit": "feet MSL",
+      "citation": {
+        "document": "Cessna Skylane 182Q Pilot's Operating Handbook",
+        "manufacturer": "Cessna Aircraft Company",
+        "year": 1977,
+        "document_number": "D1087-13-RPC-300-2/92",
+        "faa_approval": "CAR Part 3"
+      },
+      "status": "accepted"
+    },
+    "min_fuel_pump_voltage": {
+      "value": 10.5,
+      "unit": "volts",
+      "citation": {
+        "document": "Acceptable Methods, Techniques, and Practices - Aircraft Inspection and Repair",
+        "id": "FAA AC 43.13-1B",
+        "publisher": "FAA",
+        "note": "Standard 12V electrical motor minimum operating voltage. Conservative estimate pending Continental O-470 overhaul manual verification."
+      },
+      "status": "conservative_estimate"
+    }
+  }
+}

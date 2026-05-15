@@ -1,0 +1,1824 @@
+{
+  "model_type": "XGBoost",
+  "n_val_samples": 100001,
+  "global_feature_importance": [
+    {
+      "feature": "fatigue",
+      "mean_abs_shap": 3.5673
+    },
+    {
+      "feature": "pump_eff_at_inject",
+      "mean_abs_shap": 2.3058
+    },
+    {
+      "feature": "failure_encoded",
+      "mean_abs_shap": 2.2126
+    },
+    {
+      "feature": "fuel_total_at_inject",
+      "mean_abs_shap": 1.3857
+    },
+    {
+      "feature": "vs_at_inject",
+      "mean_abs_shap": 1.2875
+    },
+    {
+      "feature": "alt_at_inject",
+      "mean_abs_shap": 1.2002
+    },
+    {
+      "feature": "weather_encoded",
+      "mean_abs_shap": 0.8923
+    },
+    {
+      "feature": "ff_at_inject",
+      "mean_abs_shap": 0.6963
+    },
+    {
+      "feature": "v_at_inject",
+      "mean_abs_shap": 0.5531
+    },
+    {
+      "feature": "spd_at_inject",
+      "mean_abs_shap": 0.5346
+    },
+    {
+      "feature": "roll_at_inject",
+      "mean_abs_shap": 0.5054
+    },
+    {
+      "feature": "inject_time_frac",
+      "mean_abs_shap": 0.3355
+    },
+    {
+      "feature": "rpm_at_inject",
+      "mean_abs_shap": 0.22
+    },
+    {
+      "feature": "pitch_at_inject",
+      "mean_abs_shap": 0.1429
+    },
+    {
+      "feature": "bat_at_inject",
+      "mean_abs_shap": 0.0583
+    },
+    {
+      "feature": "skill_encoded",
+      "mean_abs_shap": 0.0401
+    }
+  ],
+  "per_component": {
+    "engine_left": {
+      "n_cat": 2077,
+      "n_rec": 4958,
+      "mean_cat_proba": 0.999,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 7.9118,
+          "rec_mean_shap": -3.7355,
+          "contrast": 11.6473,
+          "cat_p25_val": 0.89,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.298,
+          "rec_p75_val": 0.662
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 0.4733,
+          "rec_mean_shap": -1.5249,
+          "contrast": 1.9982,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": 1.9756,
+          "rec_mean_shap": 0.1885,
+          "contrast": 1.7871,
+          "cat_p25_val": -30.05,
+          "cat_p75_val": -26.31,
+          "rec_p25_val": -29.137,
+          "rec_p75_val": -26.14
+        },
+        {
+          "feature": "alt_at_inject",
+          "cat_mean_shap": 0.301,
+          "rec_mean_shap": -1.2416,
+          "contrast": 1.5426,
+          "cat_p25_val": 2804.5,
+          "cat_p75_val": 11982.4,
+          "rec_p25_val": 5059.3,
+          "rec_p75_val": 12606.075
+        },
+        {
+          "feature": "rpm_at_inject",
+          "cat_mean_shap": -0.8324,
+          "rec_mean_shap": -1.7167,
+          "contrast": 0.8843,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.7383,
+          "rec_mean_shap": -2.5001,
+          "contrast": 0.7618,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "engine_left",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + failure_encoded + vs_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.89,
+              1.0
+            ],
+            "rec_range": [
+              0.298,
+              0.662
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              0.0,
+              0.0
+            ],
+            "rec_range": [
+              0.0,
+              0.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -30.05,
+              -26.31
+            ],
+            "rec_range": [
+              -29.137,
+              -26.14
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9992265701293945,
+        "crash_probability_rec_cases": 0.0007042328943498433,
+        "interpretation": "For 'engine_left' failures: the most discriminating pre-existing conditions are fatigue(contrast=11.647), failure_encoded(contrast=1.998), vs_at_inject(contrast=1.787). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 2077,
+        "n_recoverable": 4958,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "alternator": {
+      "n_cat": 1969,
+      "n_rec": 5273,
+      "mean_cat_proba": 1.0,
+      "mean_rec_proba": 0.0,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 7.6953,
+          "rec_mean_shap": -2.8129,
+          "contrast": 10.5082,
+          "cat_p25_val": 0.915,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.294,
+          "rec_p75_val": 0.67
+        },
+        {
+          "feature": "v_at_inject",
+          "cat_mean_shap": 2.7475,
+          "rec_mean_shap": -0.824,
+          "contrast": 3.5715,
+          "cat_p25_val": 11.49,
+          "cat_p75_val": 11.49,
+          "rec_p25_val": 11.85,
+          "rec_p75_val": 11.85
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 2.2366,
+          "rec_mean_shap": -0.8643,
+          "contrast": 3.1009,
+          "cat_p25_val": 3.0,
+          "cat_p75_val": 3.0,
+          "rec_p25_val": 3.0,
+          "rec_p75_val": 3.0
+        },
+        {
+          "feature": "pitch_at_inject",
+          "cat_mean_shap": 1.8465,
+          "rec_mean_shap": -0.0835,
+          "contrast": 1.93,
+          "cat_p25_val": -2.43,
+          "cat_p75_val": -2.04,
+          "rec_p25_val": 5.0,
+          "rec_p75_val": 5.0
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": -0.6975,
+          "rec_mean_shap": -2.0535,
+          "contrast": 1.356,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 14.65,
+          "rec_p75_val": 19.31
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.1723,
+          "rec_mean_shap": -2.4542,
+          "contrast": 1.2819,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "alternator",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + v_at_inject + failure_encoded interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.915,
+              1.0
+            ],
+            "rec_range": [
+              0.294,
+              0.67
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "v_at_inject": {
+            "cat_range": [
+              11.49,
+              11.49
+            ],
+            "rec_range": [
+              11.85,
+              11.85
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              3.0,
+              3.0
+            ],
+            "rec_range": [
+              3.0,
+              3.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9999767541885376,
+        "crash_probability_rec_cases": 2.4168331947294064e-05,
+        "interpretation": "For 'alternator' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.508), v_at_inject(contrast=3.571), failure_encoded(contrast=3.101). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 1969,
+        "n_recoverable": 5273,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "battery": {
+      "n_cat": 5010,
+      "n_rec": 2130,
+      "mean_cat_proba": 0.998,
+      "mean_rec_proba": 0.011,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 3.5126,
+          "rec_mean_shap": -7.0207,
+          "contrast": 10.5332,
+          "cat_p25_val": 0.578,
+          "cat_p75_val": 0.938,
+          "rec_p25_val": 0.228,
+          "rec_p75_val": 0.432
+        },
+        {
+          "feature": "alt_at_inject",
+          "cat_mean_shap": 0.8757,
+          "rec_mean_shap": -3.3791,
+          "contrast": 4.2548,
+          "cat_p25_val": 3405.325,
+          "cat_p75_val": 11026.899,
+          "rec_p25_val": 8639.0,
+          "rec_p75_val": 14362.2
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": 2.5965,
+          "rec_mean_shap": -0.2297,
+          "contrast": 2.8262,
+          "cat_p25_val": -29.8,
+          "cat_p75_val": -26.73,
+          "rec_p25_val": -27.68,
+          "rec_p75_val": -25.59
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": 3.13,
+          "rec_mean_shap": 1.6101,
+          "contrast": 1.5198,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "spd_at_inject",
+          "cat_mean_shap": 0.2031,
+          "rec_mean_shap": -1.2879,
+          "contrast": 1.491,
+          "cat_p25_val": 131.7,
+          "cat_p75_val": 136.6,
+          "rec_p25_val": 135.0,
+          "rec_p75_val": 138.8
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 1.0934,
+          "rec_mean_shap": -0.0844,
+          "contrast": 1.1778,
+          "cat_p25_val": 4.0,
+          "cat_p75_val": 4.0,
+          "rec_p25_val": 4.0,
+          "rec_p75_val": 4.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "battery",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + alt_at_inject + vs_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.578,
+              0.938
+            ],
+            "rec_range": [
+              0.228,
+              0.432
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3405.325,
+              11026.899
+            ],
+            "rec_range": [
+              8639.0,
+              14362.2
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.8,
+              -26.73
+            ],
+            "rec_range": [
+              -27.68,
+              -25.59
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9976727962493896,
+        "crash_probability_rec_cases": 0.010865116491913795,
+        "interpretation": "For 'battery' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.533), alt_at_inject(contrast=4.255), vs_at_inject(contrast=2.826). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.01. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 5010,
+        "n_recoverable": 2130,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "voltage_regulator": {
+      "n_cat": 1848,
+      "n_rec": 5252,
+      "mean_cat_proba": 1.0,
+      "mean_rec_proba": 0.0,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 7.668,
+          "rec_mean_shap": -2.7928,
+          "contrast": 10.4608,
+          "cat_p25_val": 0.917,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.302,
+          "rec_p75_val": 0.668
+        },
+        {
+          "feature": "v_at_inject",
+          "cat_mean_shap": 2.7309,
+          "rec_mean_shap": -0.8337,
+          "contrast": 3.5646,
+          "cat_p25_val": 11.49,
+          "cat_p75_val": 11.49,
+          "rec_p25_val": 12.0,
+          "rec_p75_val": 12.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 2.2648,
+          "rec_mean_shap": -0.7671,
+          "contrast": 3.0319,
+          "cat_p25_val": 5.0,
+          "cat_p75_val": 5.0,
+          "rec_p25_val": 5.0,
+          "rec_p75_val": 5.0
+        },
+        {
+          "feature": "pitch_at_inject",
+          "cat_mean_shap": 1.8264,
+          "rec_mean_shap": -0.0835,
+          "contrast": 1.9099,
+          "cat_p25_val": -2.44,
+          "cat_p75_val": -2.02,
+          "rec_p25_val": 5.0,
+          "rec_p75_val": 5.0
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": -0.6953,
+          "rec_mean_shap": -2.0458,
+          "contrast": 1.3505,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 14.7,
+          "rec_p75_val": 19.353
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.1693,
+          "rec_mean_shap": -2.4399,
+          "contrast": 1.2706,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "voltage_regulator",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + v_at_inject + failure_encoded interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.917,
+              1.0
+            ],
+            "rec_range": [
+              0.302,
+              0.668
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "v_at_inject": {
+            "cat_range": [
+              11.49,
+              11.49
+            ],
+            "rec_range": [
+              12.0,
+              12.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              5.0,
+              5.0
+            ],
+            "rec_range": [
+              5.0,
+              5.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9999769926071167,
+        "crash_probability_rec_cases": 3.0039464036235586e-05,
+        "interpretation": "For 'voltage_regulator' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.461), v_at_inject(contrast=3.565), failure_encoded(contrast=3.032). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 1848,
+        "n_recoverable": 5252,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "fuel_pump": {
+      "n_cat": 4873,
+      "n_rec": 2347,
+      "mean_cat_proba": 0.996,
+      "mean_rec_proba": 0.012,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 3.6521,
+          "rec_mean_shap": -7.0906,
+          "contrast": 10.7426,
+          "cat_p25_val": 0.589,
+          "cat_p75_val": 0.944,
+          "rec_p25_val": 0.221,
+          "rec_p75_val": 0.43
+        },
+        {
+          "feature": "alt_at_inject",
+          "cat_mean_shap": 0.723,
+          "rec_mean_shap": -2.8107,
+          "contrast": 3.5337,
+          "cat_p25_val": 3334.4,
+          "cat_p75_val": 11252.7,
+          "rec_p25_val": 8183.75,
+          "rec_p75_val": 14146.199
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": 2.8444,
+          "rec_mean_shap": 0.0919,
+          "contrast": 2.7525,
+          "cat_p25_val": -29.83,
+          "cat_p75_val": -26.61,
+          "rec_p25_val": -27.89,
+          "rec_p75_val": -25.66
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": 3.896,
+          "rec_mean_shap": 2.0118,
+          "contrast": 1.8842,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "spd_at_inject",
+          "cat_mean_shap": 0.2302,
+          "rec_mean_shap": -1.1642,
+          "contrast": 1.3944,
+          "cat_p25_val": 131.6,
+          "cat_p75_val": 136.6,
+          "rec_p25_val": 134.6,
+          "rec_p75_val": 138.7
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 0.6858,
+          "rec_mean_shap": -0.4193,
+          "contrast": 1.1051,
+          "cat_p25_val": 6.0,
+          "cat_p75_val": 6.0,
+          "rec_p25_val": 6.0,
+          "rec_p75_val": 6.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "fuel_pump",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + alt_at_inject + vs_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.589,
+              0.944
+            ],
+            "rec_range": [
+              0.221,
+              0.43
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3334.4,
+              11252.7
+            ],
+            "rec_range": [
+              8183.75,
+              14146.199
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.83,
+              -26.61
+            ],
+            "rec_range": [
+              -27.89,
+              -25.66
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9964789152145386,
+        "crash_probability_rec_cases": 0.01231292076408863,
+        "interpretation": "For 'fuel_pump' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.743), alt_at_inject(contrast=3.534), vs_at_inject(contrast=2.752). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.01. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 4873,
+        "n_recoverable": 2347,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "fuel_selector": {
+      "n_cat": 4915,
+      "n_rec": 2231,
+      "mean_cat_proba": 0.998,
+      "mean_rec_proba": 0.017,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 3.6142,
+          "rec_mean_shap": -7.035,
+          "contrast": 10.6492,
+          "cat_p25_val": 0.59,
+          "cat_p75_val": 0.941,
+          "rec_p25_val": 0.216,
+          "rec_p75_val": 0.431
+        },
+        {
+          "feature": "alt_at_inject",
+          "cat_mean_shap": 0.7399,
+          "rec_mean_shap": -2.8235,
+          "contrast": 3.5635,
+          "cat_p25_val": 3263.9,
+          "cat_p75_val": 11003.801,
+          "rec_p25_val": 8055.1,
+          "rec_p75_val": 14273.301
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": 2.9098,
+          "rec_mean_shap": 0.0752,
+          "contrast": 2.8346,
+          "cat_p25_val": -29.87,
+          "cat_p75_val": -26.69,
+          "rec_p25_val": -27.94,
+          "rec_p75_val": -25.6
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": 3.9086,
+          "rec_mean_shap": 1.9685,
+          "contrast": 1.9401,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "spd_at_inject",
+          "cat_mean_shap": 0.2204,
+          "rec_mean_shap": -1.1685,
+          "contrast": 1.3889,
+          "cat_p25_val": 131.7,
+          "cat_p75_val": 136.6,
+          "rec_p25_val": 134.5,
+          "rec_p75_val": 138.8
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 0.7372,
+          "rec_mean_shap": -0.3625,
+          "contrast": 1.0997,
+          "cat_p25_val": 7.0,
+          "cat_p75_val": 7.0,
+          "rec_p25_val": 7.0,
+          "rec_p75_val": 7.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "fuel_selector",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + alt_at_inject + vs_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.59,
+              0.941
+            ],
+            "rec_range": [
+              0.216,
+              0.431
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3263.9,
+              11003.801
+            ],
+            "rec_range": [
+              8055.1,
+              14273.301
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.87,
+              -26.69
+            ],
+            "rec_range": [
+              -27.94,
+              -25.6
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9975020885467529,
+        "crash_probability_rec_cases": 0.01716563105583191,
+        "interpretation": "For 'fuel_selector' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.649), alt_at_inject(contrast=3.563), vs_at_inject(contrast=2.835). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.02. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 4915,
+        "n_recoverable": 2231,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "fuel_tank_left": {
+      "n_cat": 159,
+      "n_rec": 6942,
+      "mean_cat_proba": 0.995,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.934,
+          "rec_mean_shap": -0.7111,
+          "contrast": 7.6451,
+          "cat_p25_val": 0.912,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.357,
+          "rec_p75_val": 0.84
+        },
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 5.992,
+          "rec_mean_shap": -1.2949,
+          "contrast": 7.2869,
+          "cat_p25_val": 5.5,
+          "cat_p75_val": 7.8,
+          "rec_p25_val": 18.36,
+          "rec_p75_val": 45.68
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.5048,
+          "rec_mean_shap": -2.3742,
+          "contrast": 0.8694,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -1.6722,
+          "rec_mean_shap": -2.4353,
+          "contrast": 0.763,
+          "cat_p25_val": 9.0,
+          "cat_p75_val": 9.0,
+          "rec_p25_val": 9.0,
+          "rec_p75_val": 9.0
+        },
+        {
+          "feature": "inject_time_frac",
+          "cat_mean_shap": 0.2602,
+          "rec_mean_shap": -0.1552,
+          "contrast": 0.4154,
+          "cat_p25_val": 0.051,
+          "cat_p75_val": 0.184,
+          "rec_p25_val": 0.062,
+          "rec_p75_val": 0.187
+        },
+        {
+          "feature": "ff_at_inject",
+          "cat_mean_shap": -0.5874,
+          "rec_mean_shap": -0.968,
+          "contrast": 0.3806,
+          "cat_p25_val": 11.0,
+          "cat_p75_val": 11.0,
+          "rec_p25_val": 11.0,
+          "rec_p75_val": 11.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "fuel_tank_left",
+        "is_cascade_component": false,
+        "induced_relationship": "fatigue + fuel_total_at_inject + pump_eff_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.912,
+              1.0
+            ],
+            "rec_range": [
+              0.357,
+              0.84
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.5,
+              7.8
+            ],
+            "rec_range": [
+              18.36,
+              45.68
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9947502017021179,
+        "crash_probability_rec_cases": 0.000668137043248862,
+        "interpretation": "For 'fuel_tank_left' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.645), fuel_total_at_inject(contrast=7.287), pump_eff_at_inject(contrast=0.869). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 159,
+        "n_recoverable": 6942,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "fuel_tank_right": {
+      "n_cat": 179,
+      "n_rec": 6971,
+      "mean_cat_proba": 0.993,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.9173,
+          "rec_mean_shap": -0.6192,
+          "contrast": 7.5365,
+          "cat_p25_val": 0.91,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.352,
+          "rec_p75_val": 0.851
+        },
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 6.1076,
+          "rec_mean_shap": -1.3383,
+          "contrast": 7.4459,
+          "cat_p25_val": 5.12,
+          "cat_p75_val": 7.8,
+          "rec_p25_val": 18.61,
+          "rec_p75_val": 46.22
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.5337,
+          "rec_mean_shap": -2.3941,
+          "contrast": 0.8604,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -1.7564,
+          "rec_mean_shap": -2.5268,
+          "contrast": 0.7704,
+          "cat_p25_val": 10.0,
+          "cat_p75_val": 10.0,
+          "rec_p25_val": 10.0,
+          "rec_p75_val": 10.0
+        },
+        {
+          "feature": "ff_at_inject",
+          "cat_mean_shap": -0.5868,
+          "rec_mean_shap": -0.9729,
+          "contrast": 0.3861,
+          "cat_p25_val": 11.0,
+          "cat_p75_val": 11.0,
+          "rec_p25_val": 11.0,
+          "rec_p75_val": 11.0
+        },
+        {
+          "feature": "weather_encoded",
+          "cat_mean_shap": -0.0011,
+          "rec_mean_shap": -0.2536,
+          "contrast": 0.2525,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 2.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 2.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "fuel_tank_right",
+        "is_cascade_component": false,
+        "induced_relationship": "fatigue + fuel_total_at_inject + pump_eff_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.91,
+              1.0
+            ],
+            "rec_range": [
+              0.352,
+              0.851
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.12,
+              7.8
+            ],
+            "rec_range": [
+              18.61,
+              46.22
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9928461909294128,
+        "crash_probability_rec_cases": 0.0008568262564949691,
+        "interpretation": "For 'fuel_tank_right' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.537), fuel_total_at_inject(contrast=7.446), pump_eff_at_inject(contrast=0.860). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 179,
+        "n_recoverable": 6971,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "carburetor": {
+      "n_cat": 189,
+      "n_rec": 6986,
+      "mean_cat_proba": 0.997,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 7.1677,
+          "rec_mean_shap": -0.6687,
+          "contrast": 7.8364,
+          "cat_p25_val": 0.916,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.359,
+          "rec_p75_val": 0.844
+        },
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 6.2633,
+          "rec_mean_shap": -1.4074,
+          "contrast": 7.6707,
+          "cat_p25_val": 5.26,
+          "cat_p75_val": 7.84,
+          "rec_p25_val": 18.665,
+          "rec_p75_val": 45.975
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.541,
+          "rec_mean_shap": -2.4577,
+          "contrast": 0.9167,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -1.4679,
+          "rec_mean_shap": -2.2004,
+          "contrast": 0.7325,
+          "cat_p25_val": 11.0,
+          "cat_p75_val": 11.0,
+          "rec_p25_val": 11.0,
+          "rec_p75_val": 11.0
+        },
+        {
+          "feature": "vs_at_inject",
+          "cat_mean_shap": -1.2457,
+          "rec_mean_shap": -1.7693,
+          "contrast": 0.5236,
+          "cat_p25_val": 14.6,
+          "cat_p75_val": 19.54,
+          "rec_p25_val": 14.7,
+          "rec_p75_val": 19.41
+        },
+        {
+          "feature": "ff_at_inject",
+          "cat_mean_shap": -0.5703,
+          "rec_mean_shap": -0.9453,
+          "contrast": 0.375,
+          "cat_p25_val": 11.0,
+          "cat_p75_val": 11.0,
+          "rec_p25_val": 11.0,
+          "rec_p75_val": 11.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "carburetor",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + fuel_total_at_inject + pump_eff_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.916,
+              1.0
+            ],
+            "rec_range": [
+              0.359,
+              0.844
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.26,
+              7.84
+            ],
+            "rec_range": [
+              18.665,
+              45.975
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9968355298042297,
+        "crash_probability_rec_cases": 0.0008561713038943708,
+        "interpretation": "For 'carburetor' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.836), fuel_total_at_inject(contrast=7.671), pump_eff_at_inject(contrast=0.917). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 189,
+        "n_recoverable": 6986,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "magnetos": {
+      "n_cat": 194,
+      "n_rec": 6951,
+      "mean_cat_proba": 0.991,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.9902,
+          "rec_mean_shap": -0.6622,
+          "contrast": 7.6524,
+          "cat_p25_val": 0.907,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.365,
+          "rec_p75_val": 0.834
+        },
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 5.9221,
+          "rec_mean_shap": -1.3249,
+          "contrast": 7.247,
+          "cat_p25_val": 5.05,
+          "cat_p75_val": 8.085,
+          "rec_p25_val": 18.7,
+          "rec_p75_val": 46.02
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.5093,
+          "rec_mean_shap": -2.3618,
+          "contrast": 0.8525,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -1.6321,
+          "rec_mean_shap": -2.436,
+          "contrast": 0.8039,
+          "cat_p25_val": 12.0,
+          "cat_p75_val": 12.0,
+          "rec_p25_val": 12.0,
+          "rec_p75_val": 12.0
+        },
+        {
+          "feature": "inject_time_frac",
+          "cat_mean_shap": 0.2393,
+          "rec_mean_shap": -0.1575,
+          "contrast": 0.3968,
+          "cat_p25_val": 0.049,
+          "cat_p75_val": 0.186,
+          "rec_p25_val": 0.062,
+          "rec_p75_val": 0.188
+        },
+        {
+          "feature": "ff_at_inject",
+          "cat_mean_shap": -0.58,
+          "rec_mean_shap": -0.9692,
+          "contrast": 0.3892,
+          "cat_p25_val": 11.0,
+          "cat_p75_val": 11.0,
+          "rec_p25_val": 11.0,
+          "rec_p75_val": 11.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "magnetos",
+        "is_cascade_component": true,
+        "induced_relationship": "fatigue + fuel_total_at_inject + pump_eff_at_inject interaction",
+        "critical_state_combination": {
+          "fatigue": {
+            "cat_range": [
+              0.907,
+              1.0
+            ],
+            "rec_range": [
+              0.365,
+              0.834
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.05,
+              8.085
+            ],
+            "rec_range": [
+              18.7,
+              46.02
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9911887049674988,
+        "crash_probability_rec_cases": 0.000657638069242239,
+        "interpretation": "For 'magnetos' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.652), fuel_total_at_inject(contrast=7.247), pump_eff_at_inject(contrast=0.853). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 194,
+        "n_recoverable": 6951,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "vacuum_pump": {
+      "n_cat": 3632,
+      "n_rec": 3489,
+      "mean_cat_proba": 0.999,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "weather_encoded",
+          "cat_mean_shap": 2.1953,
+          "rec_mean_shap": -4.378,
+          "contrast": 6.5733,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 2.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 3.0
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": 6.3271,
+          "rec_mean_shap": 2.6482,
+          "contrast": 3.6789,
+          "cat_p25_val": 13.0,
+          "cat_p75_val": 13.0,
+          "rec_p25_val": 13.0,
+          "rec_p75_val": 13.0
+        },
+        {
+          "feature": "roll_at_inject",
+          "cat_mean_shap": 2.3324,
+          "rec_mean_shap": -0.4035,
+          "contrast": 2.7359,
+          "cat_p25_val": 0.0,
+          "cat_p75_val": 0.01,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 0.0
+        },
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 0.6783,
+          "rec_mean_shap": -0.9544,
+          "contrast": 1.6327,
+          "cat_p25_val": 0.428,
+          "cat_p75_val": 0.932,
+          "rec_p25_val": 0.297,
+          "rec_p75_val": 0.777
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.0848,
+          "rec_mean_shap": -1.6732,
+          "contrast": 0.5884,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": -0.469,
+          "rec_mean_shap": -1.0198,
+          "contrast": 0.5507,
+          "cat_p25_val": 17.1,
+          "cat_p75_val": 45.74,
+          "rec_p25_val": 19.02,
+          "rec_p75_val": 45.76
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "vacuum_pump",
+        "is_cascade_component": false,
+        "induced_relationship": "weather_encoded + failure_encoded + roll_at_inject interaction",
+        "critical_state_combination": {
+          "weather_encoded": {
+            "cat_range": [
+              1.0,
+              2.0
+            ],
+            "rec_range": [
+              0.0,
+              3.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              13.0,
+              13.0
+            ],
+            "rec_range": [
+              13.0,
+              13.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "roll_at_inject": {
+            "cat_range": [
+              0.0,
+              0.01
+            ],
+            "rec_range": [
+              0.0,
+              0.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9993181824684143,
+        "crash_probability_rec_cases": 0.0012912920210510492,
+        "interpretation": "For 'vacuum_pump' failures: the most discriminating pre-existing conditions are weather_encoded(contrast=6.573), failure_encoded(contrast=3.679), roll_at_inject(contrast=2.736). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 3632,
+        "n_recoverable": 3489,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "attitude_indicator": {
+      "n_cat": 188,
+      "n_rec": 6936,
+      "mean_cat_proba": 0.994,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 6.2821,
+          "rec_mean_shap": -1.6284,
+          "contrast": 7.9105,
+          "cat_p25_val": 5.06,
+          "cat_p75_val": 8.165,
+          "rec_p25_val": 18.695,
+          "rec_p75_val": 46.26
+        },
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.8533,
+          "rec_mean_shap": -0.8562,
+          "contrast": 7.7095,
+          "cat_p25_val": 0.918,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.351,
+          "rec_p75_val": 0.835
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -2.0618,
+          "rec_mean_shap": -3.6979,
+          "contrast": 1.6361,
+          "cat_p25_val": 15.0,
+          "cat_p75_val": 15.0,
+          "rec_p25_val": 15.0,
+          "rec_p75_val": 15.0
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.3379,
+          "rec_mean_shap": -1.8952,
+          "contrast": 0.5573,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "inject_time_frac",
+          "cat_mean_shap": 0.2765,
+          "rec_mean_shap": -0.1705,
+          "contrast": 0.447,
+          "cat_p25_val": 0.056,
+          "cat_p75_val": 0.183,
+          "rec_p25_val": 0.065,
+          "rec_p75_val": 0.19
+        },
+        {
+          "feature": "weather_encoded",
+          "cat_mean_shap": 0.0079,
+          "rec_mean_shap": -0.2795,
+          "contrast": 0.2874,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 2.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 2.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "attitude_indicator",
+        "is_cascade_component": false,
+        "induced_relationship": "fuel_total_at_inject + fatigue + failure_encoded interaction",
+        "critical_state_combination": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.06,
+              8.165
+            ],
+            "rec_range": [
+              18.695,
+              46.26
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.918,
+              1.0
+            ],
+            "rec_range": [
+              0.351,
+              0.835
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              15.0,
+              15.0
+            ],
+            "rec_range": [
+              15.0,
+              15.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9935437440872192,
+        "crash_probability_rec_cases": 0.0005333245499059558,
+        "interpretation": "For 'attitude_indicator' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=7.910), fatigue(contrast=7.710), failure_encoded(contrast=1.636). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 188,
+        "n_recoverable": 6936,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "flaps": {
+      "n_cat": 186,
+      "n_rec": 7045,
+      "mean_cat_proba": 0.997,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 6.4449,
+          "rec_mean_shap": -1.627,
+          "contrast": 8.0719,
+          "cat_p25_val": 5.1,
+          "cat_p75_val": 7.96,
+          "rec_p25_val": 18.94,
+          "rec_p75_val": 46.24
+        },
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.8652,
+          "rec_mean_shap": -0.8434,
+          "contrast": 7.7086,
+          "cat_p25_val": 0.912,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.349,
+          "rec_p75_val": 0.836
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -2.1379,
+          "rec_mean_shap": -3.7681,
+          "contrast": 1.6301,
+          "cat_p25_val": 16.0,
+          "cat_p75_val": 16.0,
+          "rec_p25_val": 16.0,
+          "rec_p75_val": 16.0
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.3493,
+          "rec_mean_shap": -1.8877,
+          "contrast": 0.5384,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "inject_time_frac",
+          "cat_mean_shap": 0.2746,
+          "rec_mean_shap": -0.162,
+          "contrast": 0.4367,
+          "cat_p25_val": 0.05,
+          "cat_p75_val": 0.19,
+          "rec_p25_val": 0.062,
+          "rec_p75_val": 0.189
+        },
+        {
+          "feature": "weather_encoded",
+          "cat_mean_shap": 0.033,
+          "rec_mean_shap": -0.2763,
+          "contrast": 0.3093,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 2.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 2.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "flaps",
+        "is_cascade_component": false,
+        "induced_relationship": "fuel_total_at_inject + fatigue + failure_encoded interaction",
+        "critical_state_combination": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.1,
+              7.96
+            ],
+            "rec_range": [
+              18.94,
+              46.24
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.912,
+              1.0
+            ],
+            "rec_range": [
+              0.349,
+              0.836
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              16.0,
+              16.0
+            ],
+            "rec_range": [
+              16.0,
+              16.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9969978928565979,
+        "crash_probability_rec_cases": 0.0006558300228789449,
+        "interpretation": "For 'flaps' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=8.072), fatigue(contrast=7.709), failure_encoded(contrast=1.630). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 186,
+        "n_recoverable": 7045,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    },
+    "trim_system": {
+      "n_cat": 177,
+      "n_rec": 6894,
+      "mean_cat_proba": 0.993,
+      "mean_rec_proba": 0.001,
+      "top_differentiating_features": [
+        {
+          "feature": "fuel_total_at_inject",
+          "cat_mean_shap": 6.4388,
+          "rec_mean_shap": -1.5981,
+          "contrast": 8.0369,
+          "cat_p25_val": 5.06,
+          "cat_p75_val": 7.84,
+          "rec_p25_val": 18.48,
+          "rec_p75_val": 45.9
+        },
+        {
+          "feature": "fatigue",
+          "cat_mean_shap": 6.9224,
+          "rec_mean_shap": -0.8193,
+          "contrast": 7.7417,
+          "cat_p25_val": 0.928,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 0.36,
+          "rec_p75_val": 0.844
+        },
+        {
+          "feature": "failure_encoded",
+          "cat_mean_shap": -2.0973,
+          "rec_mean_shap": -3.7034,
+          "contrast": 1.6061,
+          "cat_p25_val": 17.0,
+          "cat_p75_val": 17.0,
+          "rec_p25_val": 17.0,
+          "rec_p75_val": 17.0
+        },
+        {
+          "feature": "pump_eff_at_inject",
+          "cat_mean_shap": -1.3329,
+          "rec_mean_shap": -1.9019,
+          "contrast": 0.569,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 1.0,
+          "rec_p25_val": 1.0,
+          "rec_p75_val": 1.0
+        },
+        {
+          "feature": "inject_time_frac",
+          "cat_mean_shap": 0.1721,
+          "rec_mean_shap": -0.1639,
+          "contrast": 0.336,
+          "cat_p25_val": 0.074,
+          "cat_p75_val": 0.179,
+          "rec_p25_val": 0.062,
+          "rec_p75_val": 0.189
+        },
+        {
+          "feature": "weather_encoded",
+          "cat_mean_shap": -0.0093,
+          "rec_mean_shap": -0.2848,
+          "contrast": 0.2755,
+          "cat_p25_val": 1.0,
+          "cat_p75_val": 2.0,
+          "rec_p25_val": 0.0,
+          "rec_p75_val": 3.0
+        }
+      ],
+      "induced_rule": {
+        "model": "snapshot_xgboost",
+        "primary_failure": "trim_system",
+        "is_cascade_component": false,
+        "induced_relationship": "fuel_total_at_inject + fatigue + failure_encoded interaction",
+        "critical_state_combination": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.06,
+              7.84
+            ],
+            "rec_range": [
+              18.48,
+              45.9
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.928,
+              1.0
+            ],
+            "rec_range": [
+              0.36,
+              0.844
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              17.0,
+              17.0
+            ],
+            "rec_range": [
+              17.0,
+              17.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        },
+        "crash_probability_cat_cases": 0.9933423399925232,
+        "crash_probability_rec_cases": 0.0006004988681524992,
+        "interpretation": "For 'trim_system' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=8.037), fatigue(contrast=7.742), failure_encoded(contrast=1.606). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+        "n_catastrophic": 177,
+        "n_recoverable": 6894,
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "shap_interaction_analysis"
+      }
+    }
+  },
+  "l1_rule_crossreference": [
+    {
+      "rule_id": "R001",
+      "trigger": "alternator",
+      "effect": "voltage\u219212V",
+      "source_citation": "POH \u00a77.1",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R002",
+      "trigger": "battery_discharge",
+      "effect": "voltage_decay",
+      "source_citation": "Service Manual D2006R4-13",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R003",
+      "trigger": "voltage<11.5V",
+      "effect": "pump_eff\u221220%/V",
+      "source_citation": "FAA AC 43.13-1B",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R004",
+      "trigger": "voltage<10.5V",
+      "effect": "pump_fail",
+      "source_citation": "FAA AC 43.13-1B",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R005",
+      "trigger": "pump_fail",
+      "effect": "engine_fuel_loss",
+      "source_citation": "POH \u00a77.1",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R006",
+      "trigger": "engine_fail",
+      "effect": "alternator_stop",
+      "source_citation": "POH \u00a77.1",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R007",
+      "trigger": "vacuum_pump_fail",
+      "effect": "gyros_fail",
+      "source_citation": "POH \u00a77.3",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R008",
+      "trigger": "engine_fail",
+      "effect": "vacuum_stop",
+      "source_citation": "POH \u00a77.3",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R009",
+      "trigger": "pump_degraded",
+      "effect": "engine_power_degraded",
+      "source_citation": "Continental O-470 Manual",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R010",
+      "trigger": "voltage<10V",
+      "effect": "flaps_trim_fail",
+      "source_citation": "FAA AC 23.1309-1A",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R011",
+      "trigger": "carburetor_fail",
+      "effect": "rpm_loss_gradual",
+      "source_citation": "FAA AC 61-23C",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R012",
+      "trigger": "fuel_selector_empty",
+      "effect": "fuel_starvation",
+      "source_citation": "POH \u00a74.2",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R013",
+      "trigger": "voltage_reg_fail",
+      "effect": "same_as_R001",
+      "source_citation": "POH \u00a77.1",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    },
+    {
+      "rule_id": "R014",
+      "trigger": "vacuum_fail+imc",
+      "effect": "spatial_disorientation",
+      "source_citation": "FAA AC 61-27C",
+      "shap_consistent": false,
+      "related_shap_features": [],
+      "status": "NOT_DETECTED_IN_SNAPSHOT"
+    }
+  ]
+}

@@ -1,0 +1,2268 @@
+{
+  "meta": {
+    "model_val_acc": 0.9977035806012993,
+    "extractor_version": "cascade_v1",
+    "min_cascade_s": 5.0,
+    "n_components": 14,
+    "n_emergent_rules": 14
+  },
+  "variable_importance_global": [
+    {
+      "variable": "rpm",
+      "mean_attention": 0.224,
+      "n_components": 5
+    },
+    {
+      "variable": "alt",
+      "mean_attention": 0.221,
+      "n_components": 7
+    },
+    {
+      "variable": "pitch",
+      "mean_attention": 0.18,
+      "n_components": 14
+    },
+    {
+      "variable": "vs",
+      "mean_attention": 0.173,
+      "n_components": 7
+    },
+    {
+      "variable": "v",
+      "mean_attention": 0.117,
+      "n_components": 3
+    },
+    {
+      "variable": "ff",
+      "mean_attention": 0.105,
+      "n_components": 2
+    },
+    {
+      "variable": "pump_eff",
+      "mean_attention": 0.101,
+      "n_components": 2
+    }
+  ],
+  "per_component": {
+    "alternator": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.99,
+        "TERMINAL": 0.01,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.145
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.121
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.116
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.109
+        },
+        {
+          "variable": "pump_eff",
+          "mean_attention": 0.102
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.094
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.07
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 11.12,
+          "p25": 11.13,
+          "p75": 11.16,
+          "p90": 11.16,
+          "iqr": 0.03,
+          "mean": 11.141
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -2.49,
+          "p25": -2.41,
+          "p75": -2.07,
+          "p90": -1.91,
+          "iqr": 0.34,
+          "mean": -2.222
+        },
+        "alt": {
+          "p10": 3306.1,
+          "p25": 5273.1,
+          "p75": 12064.1,
+          "p90": 14681.9,
+          "iqr": 6791.0,
+          "mean": 8863.149
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": -0.0,
+          "p25": 0.0,
+          "p75": -0.0,
+          "p90": 0.0,
+          "iqr": -0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 1321.0,
+          "p75": 1818.0
+        }
+      },
+      "crash_probability_in_zone": 0.397,
+      "recovery_probability_in_zone": 0.603,
+      "induced_rule": {
+        "induced_relationship": "v + rpm cascade interaction",
+        "primary_failure": "alternator",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            11.13,
+            11.16
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            -2.41,
+            -2.07
+          ],
+          "altitude_range_ft": [
+            5273.1,
+            12064.1
+          ],
+          "time_since_inject_s": {
+            "p25": 1321.0,
+            "p75": 1818.0
+          }
+        },
+        "voltage_iqr_V": 0.03,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.397,
+        "recovery_probability_in_this_zone": 0.603,
+        "interpretation": "For 'alternator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-2.07\u00b0, altitude=5273.1\u201312064.1 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "attitude_indicator": {
+      "n_trajectories": 188,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.191
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": 0.449,
+          "p25": 1.887,
+          "p75": 3.54,
+          "p90": 3.8,
+          "iqr": 1.653,
+          "mean": 2.588
+        },
+        "alt": {
+          "p10": 1579.8,
+          "p25": 4453.525,
+          "p75": 12584.625,
+          "p90": 14868.9,
+          "iqr": 8131.1,
+          "mean": 8667.338
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 215.0,
+          "p75": 677.0
+        }
+      },
+      "crash_probability_in_zone": 0.795,
+      "recovery_probability_in_zone": 0.205,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "attitude_indicator",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.887,
+            3.54
+          ],
+          "altitude_range_ft": [
+            4453.525,
+            12584.625
+          ],
+          "time_since_inject_s": {
+            "p25": 215.0,
+            "p75": 677.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.795,
+        "recovery_probability_in_this_zone": 0.205,
+        "interpretation": "For 'attitude_indicator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.887\u00b0\u20133.54\u00b0, altitude=4453.525\u201312584.625 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=188 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "battery": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.943,
+        "TERMINAL": 0.057,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.361
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.32
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.252
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.205
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "ff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pump_eff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pitch": {
+          "p10": 6.72,
+          "p25": 7.53,
+          "p75": 15.438,
+          "p90": 25.0,
+          "iqr": 7.907,
+          "mean": 12.29
+        },
+        "alt": {
+          "p10": 3139.67,
+          "p25": 4449.95,
+          "p75": 11873.225,
+          "p90": 14149.16,
+          "iqr": 7423.275,
+          "mean": 8234.668
+        },
+        "rpm": {
+          "p10": 1810.0,
+          "p25": 1860.0,
+          "p75": 1940.0,
+          "p90": 1965.0,
+          "iqr": 80.0,
+          "mean": 1893.996
+        },
+        "vs": {
+          "p10": -200.0,
+          "p25": -135.657,
+          "p75": -37.28,
+          "p90": -32.437,
+          "iqr": 98.377,
+          "mean": -88.178
+        },
+        "time_since_inject_s": {
+          "p25": 221.0,
+          "p75": 697.0
+        }
+      },
+      "crash_probability_in_zone": 1.0,
+      "recovery_probability_in_zone": 0.0,
+      "induced_rule": {
+        "induced_relationship": "alt + rpm cascade interaction",
+        "primary_failure": "battery",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            0.0,
+            0.0
+          ],
+          "fuel_flow_range_gph": [
+            0.0,
+            0.0
+          ],
+          "pitch_range_deg": [
+            7.53,
+            15.438
+          ],
+          "altitude_range_ft": [
+            4449.95,
+            11873.225
+          ],
+          "time_since_inject_s": {
+            "p25": 221.0,
+            "p75": 697.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 1.0,
+        "recovery_probability_in_this_zone": 0.0,
+        "interpretation": "For 'battery' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=0.0\u20130.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.53\u00b0\u201315.438\u00b0, altitude=4449.95\u201311873.225 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "carburetor": {
+      "n_trajectories": 189,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "vs",
+          "mean_attention": 0.269
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.207
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.165
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": 0.58,
+          "p25": 2.45,
+          "p75": 3.59,
+          "p90": 3.85,
+          "iqr": 1.14,
+          "mean": 2.696
+        },
+        "alt": {
+          "p10": 2159.6,
+          "p25": 4395.85,
+          "p75": 12674.85,
+          "p90": 15283.78,
+          "iqr": 8279.0,
+          "mean": 8610.661
+        },
+        "rpm": {
+          "p10": 2397.0,
+          "p25": 2397.0,
+          "p75": 2397.0,
+          "p90": 2397.0,
+          "iqr": 0.0,
+          "mean": 2397.0
+        },
+        "vs": {
+          "p10": 7.54,
+          "p25": 11.71,
+          "p75": 18.1,
+          "p90": 20.03,
+          "iqr": 6.39,
+          "mean": 13.835
+        },
+        "time_since_inject_s": {
+          "p25": 248.0,
+          "p75": 681.0
+        }
+      },
+      "crash_probability_in_zone": 0.854,
+      "recovery_probability_in_zone": 0.146,
+      "induced_rule": {
+        "induced_relationship": "vs + pitch cascade interaction",
+        "primary_failure": "carburetor",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            2.45,
+            3.59
+          ],
+          "altitude_range_ft": [
+            4395.85,
+            12674.85
+          ],
+          "time_since_inject_s": {
+            "p25": 248.0,
+            "p75": 681.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.854,
+        "recovery_probability_in_this_zone": 0.146,
+        "interpretation": "For 'carburetor' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=2.45\u00b0\u20133.59\u00b0, altitude=4395.85\u201312674.85 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=189 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "engine_left": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.179
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.12
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.069
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.067
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 11.85,
+          "p25": 11.86,
+          "p75": 11.92,
+          "p90": 11.95,
+          "iqr": 0.06,
+          "mean": 11.896
+        },
+        "ff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -2.94,
+          "p25": -2.88,
+          "p75": 0.81,
+          "p90": 2.16,
+          "iqr": 3.69,
+          "mean": -0.544
+        },
+        "alt": {
+          "p10": 733.76,
+          "p25": 2060.975,
+          "p75": 12577.025,
+          "p90": 14977.24,
+          "iqr": 10516.05,
+          "mean": 7520.433
+        },
+        "rpm": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "vs": {
+          "p10": -7.95,
+          "p25": -4.83,
+          "p75": -3.53,
+          "p90": -2.32,
+          "iqr": 1.3,
+          "mean": -4.679
+        },
+        "time_since_inject_s": {
+          "p25": 208.0,
+          "p75": 658.0
+        }
+      },
+      "crash_probability_in_zone": 0.233,
+      "recovery_probability_in_zone": 0.767,
+      "induced_rule": {
+        "induced_relationship": "pitch + alt cascade interaction",
+        "primary_failure": "engine_left",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            11.86,
+            11.92
+          ],
+          "fuel_flow_range_gph": [
+            0.0,
+            0.0
+          ],
+          "pitch_range_deg": [
+            -2.88,
+            0.81
+          ],
+          "altitude_range_ft": [
+            2060.975,
+            12577.025
+          ],
+          "time_since_inject_s": {
+            "p25": 208.0,
+            "p75": 658.0
+          }
+        },
+        "voltage_iqr_V": 0.06,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.233,
+        "recovery_probability_in_this_zone": 0.767,
+        "interpretation": "For 'engine_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.86\u201311.92 V, fuel_flow=0.0\u20130.0 GPH, pitch=-2.88\u00b0\u20130.81\u00b0, altitude=2060.975\u201312577.025 ft. voltage IQR=0.06V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "flaps": {
+      "n_trajectories": 186,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.201
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -0.543,
+          "p25": 1.92,
+          "p75": 3.58,
+          "p90": 3.841,
+          "iqr": 1.66,
+          "mean": 2.566
+        },
+        "alt": {
+          "p10": 2077.8,
+          "p25": 3783.8,
+          "p75": 12474.8,
+          "p90": 14865.0,
+          "iqr": 8691.0,
+          "mean": 8040.457
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 196.0,
+          "p75": 698.0
+        }
+      },
+      "crash_probability_in_zone": 0.781,
+      "recovery_probability_in_zone": 0.219,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "flaps",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.92,
+            3.58
+          ],
+          "altitude_range_ft": [
+            3783.8,
+            12474.8
+          ],
+          "time_since_inject_s": {
+            "p25": 196.0,
+            "p75": 698.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.781,
+        "recovery_probability_in_this_zone": 0.219,
+        "interpretation": "For 'flaps' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.92\u00b0\u20133.58\u00b0, altitude=3783.8\u201312474.8 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=186 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "fuel_pump": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.861,
+        "TERMINAL": 0.139,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.336
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.278
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.246
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.208
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pump_eff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pitch": {
+          "p10": 6.65,
+          "p25": 7.94,
+          "p75": 18.565,
+          "p90": 25.0,
+          "iqr": 10.625,
+          "mean": 13.253
+        },
+        "alt": {
+          "p10": 1410.06,
+          "p25": 2608.45,
+          "p75": 11554.95,
+          "p90": 14183.36,
+          "iqr": 8946.5,
+          "mean": 7257.371
+        },
+        "rpm": {
+          "p10": 1790.0,
+          "p25": 1835.0,
+          "p75": 1945.0,
+          "p90": 1965.0,
+          "iqr": 110.0,
+          "mean": 1873.966
+        },
+        "vs": {
+          "p10": -200.0,
+          "p25": -160.565,
+          "p75": -40.635,
+          "p90": -32.482,
+          "iqr": 119.93,
+          "mean": -97.158
+        },
+        "time_since_inject_s": {
+          "p25": 250.0,
+          "p75": 651.0
+        }
+      },
+      "crash_probability_in_zone": 1.0,
+      "recovery_probability_in_zone": 0.0,
+      "induced_rule": {
+        "induced_relationship": "alt + rpm cascade interaction",
+        "primary_failure": "fuel_pump",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            0.0,
+            0.0
+          ],
+          "pitch_range_deg": [
+            7.94,
+            18.565
+          ],
+          "altitude_range_ft": [
+            2608.45,
+            11554.95
+          ],
+          "time_since_inject_s": {
+            "p25": 250.0,
+            "p75": 651.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 1.0,
+        "recovery_probability_in_this_zone": 0.0,
+        "interpretation": "For 'fuel_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.94\u00b0\u201318.565\u00b0, altitude=2608.45\u201311554.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "fuel_selector": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.922,
+        "TERMINAL": 0.078,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.332
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.282
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.24
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.193
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pump_eff": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "pitch": {
+          "p10": 6.79,
+          "p25": 7.772,
+          "p75": 19.127,
+          "p90": 25.0,
+          "iqr": 11.355,
+          "mean": 13.355
+        },
+        "alt": {
+          "p10": 1365.65,
+          "p25": 3237.425,
+          "p75": 11592.95,
+          "p90": 13922.9,
+          "iqr": 8355.525,
+          "mean": 7468.219
+        },
+        "rpm": {
+          "p10": 1790.0,
+          "p25": 1830.0,
+          "p75": 1945.0,
+          "p90": 1965.0,
+          "iqr": 115.0,
+          "mean": 1866.226
+        },
+        "vs": {
+          "p10": -200.0,
+          "p25": -159.58,
+          "p75": -39.26,
+          "p90": -33.205,
+          "iqr": 120.32,
+          "mean": -96.825
+        },
+        "time_since_inject_s": {
+          "p25": 241.0,
+          "p75": 670.0
+        }
+      },
+      "crash_probability_in_zone": 1.0,
+      "recovery_probability_in_zone": 0.0,
+      "induced_rule": {
+        "induced_relationship": "alt + rpm cascade interaction",
+        "primary_failure": "fuel_selector",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            0.0,
+            0.0
+          ],
+          "pitch_range_deg": [
+            7.772,
+            19.127
+          ],
+          "altitude_range_ft": [
+            3237.425,
+            11592.95
+          ],
+          "time_since_inject_s": {
+            "p25": 241.0,
+            "p75": 670.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 1.0,
+        "recovery_probability_in_this_zone": 0.0,
+        "interpretation": "For 'fuel_selector' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.772\u00b0\u201319.127\u00b0, altitude=3237.425\u201311592.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "fuel_tank_left": {
+      "n_trajectories": 159,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.199
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": 0.434,
+          "p25": 1.61,
+          "p75": 3.54,
+          "p90": 3.8,
+          "iqr": 1.93,
+          "mean": 2.551
+        },
+        "alt": {
+          "p10": 2106.7,
+          "p25": 4372.5,
+          "p75": 12388.5,
+          "p90": 15212.6,
+          "iqr": 8016.0,
+          "mean": 8283.152
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 197.0,
+          "p75": 681.0
+        }
+      },
+      "crash_probability_in_zone": 0.747,
+      "recovery_probability_in_zone": 0.253,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "fuel_tank_left",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.61,
+            3.54
+          ],
+          "altitude_range_ft": [
+            4372.5,
+            12388.5
+          ],
+          "time_since_inject_s": {
+            "p25": 197.0,
+            "p75": 681.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.747,
+        "recovery_probability_in_this_zone": 0.253,
+        "interpretation": "For 'fuel_tank_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.61\u00b0\u20133.54\u00b0, altitude=4372.5\u201312388.5 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=159 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "fuel_tank_right": {
+      "n_trajectories": 179,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.195
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -0.498,
+          "p25": 1.68,
+          "p75": 3.5,
+          "p90": 3.76,
+          "iqr": 1.82,
+          "mean": 2.5
+        },
+        "alt": {
+          "p10": 1509.0,
+          "p25": 4152.8,
+          "p75": 11824.2,
+          "p90": 15111.4,
+          "iqr": 7671.4,
+          "mean": 8504.959
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 269.0,
+          "p75": 708.0
+        }
+      },
+      "crash_probability_in_zone": 0.791,
+      "recovery_probability_in_zone": 0.209,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "fuel_tank_right",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.68,
+            3.5
+          ],
+          "altitude_range_ft": [
+            4152.8,
+            11824.2
+          ],
+          "time_since_inject_s": {
+            "p25": 269.0,
+            "p75": 708.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.791,
+        "recovery_probability_in_this_zone": 0.209,
+        "interpretation": "For 'fuel_tank_right' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.68\u00b0\u20133.5\u00b0, altitude=4152.8\u201311824.2 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=179 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "magnetos": {
+      "n_trajectories": 194,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.184
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -0.232,
+          "p25": 1.51,
+          "p75": 3.5,
+          "p90": 3.69,
+          "iqr": 1.99,
+          "mean": 2.452
+        },
+        "alt": {
+          "p10": 2485.1,
+          "p25": 5198.1,
+          "p75": 12939.9,
+          "p90": 14936.9,
+          "iqr": 7741.8,
+          "mean": 9046.58
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 194.0,
+          "p75": 691.0
+        }
+      },
+      "crash_probability_in_zone": 0.758,
+      "recovery_probability_in_zone": 0.242,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "magnetos",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.51,
+            3.5
+          ],
+          "altitude_range_ft": [
+            5198.1,
+            12939.9
+          ],
+          "time_since_inject_s": {
+            "p25": 194.0,
+            "p75": 691.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.758,
+        "recovery_probability_in_this_zone": 0.242,
+        "interpretation": "For 'magnetos' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.51\u00b0\u20133.5\u00b0, altitude=5198.1\u201312939.9 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=194 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "trim_system": {
+      "n_trajectories": 177,
+      "timing_fractions": {
+        "MID_CASCADE": 1.0,
+        "TERMINAL": 0.0,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.195
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": 0.424,
+          "p25": 1.78,
+          "p75": 3.58,
+          "p90": 3.84,
+          "iqr": 1.8,
+          "mean": 2.607
+        },
+        "alt": {
+          "p10": 1827.5,
+          "p25": 4418.0,
+          "p75": 12351.0,
+          "p90": 15212.4,
+          "iqr": 7933.0,
+          "mean": 8574.047
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 282.0,
+          "p75": 656.0
+        }
+      },
+      "crash_probability_in_zone": 0.782,
+      "recovery_probability_in_zone": 0.218,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "trim_system",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            1.78,
+            3.58
+          ],
+          "altitude_range_ft": [
+            4418.0,
+            12351.0
+          ],
+          "time_since_inject_s": {
+            "p25": 282.0,
+            "p75": 656.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.782,
+        "recovery_probability_in_this_zone": 0.218,
+        "interpretation": "For 'trim_system' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.78\u00b0\u20133.58\u00b0, altitude=4418.0\u201312351.0 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=177 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "vacuum_pump": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.915,
+        "TERMINAL": 0.085,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.172
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 14.0,
+          "p25": 14.0,
+          "p75": 14.0,
+          "p90": 14.0,
+          "iqr": 0.0,
+          "mean": 14.0
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -1.55,
+          "p25": -1.07,
+          "p75": 3.78,
+          "p90": 4.12,
+          "iqr": 4.85,
+          "mean": 1.632
+        },
+        "alt": {
+          "p10": 2307.3,
+          "p25": 4347.2,
+          "p75": 13682.4,
+          "p90": 15269.2,
+          "iqr": 9335.2,
+          "mean": 8703.276
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "p90": 0.0,
+          "iqr": 0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 242.0,
+          "p75": 697.0
+        }
+      },
+      "crash_probability_in_zone": 0.252,
+      "recovery_probability_in_zone": 0.748,
+      "induced_rule": {
+        "induced_relationship": "pitch cascade interaction",
+        "primary_failure": "vacuum_pump",
+        "is_cascade_component": false,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            -1.07,
+            3.78
+          ],
+          "altitude_range_ft": [
+            4347.2,
+            13682.4
+          ],
+          "time_since_inject_s": {
+            "p25": 242.0,
+            "p75": 697.0
+          }
+        },
+        "voltage_iqr_V": 0.0,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.252,
+        "recovery_probability_in_this_zone": 0.748,
+        "interpretation": "For 'vacuum_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=-1.07\u00b0\u20133.78\u00b0, altitude=4347.2\u201313682.4 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    },
+    "voltage_regulator": {
+      "n_trajectories": 200,
+      "timing_fractions": {
+        "MID_CASCADE": 0.991,
+        "TERMINAL": 0.009,
+        "EARLY_CASCADE": 0.0
+      },
+      "quality_score": 1.0,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.139
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.119
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.114
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.102
+        },
+        {
+          "variable": "pump_eff",
+          "mean_attention": 0.099
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.091
+        },
+        {
+          "variable": "vs",
+          "mean_attention": 0.065
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p10": 11.12,
+          "p25": 11.13,
+          "p75": 11.16,
+          "p90": 11.16,
+          "iqr": 0.03,
+          "mean": 11.14
+        },
+        "ff": {
+          "p10": 11.0,
+          "p25": 11.0,
+          "p75": 11.0,
+          "p90": 11.0,
+          "iqr": 0.0,
+          "mean": 11.0
+        },
+        "pump_eff": {
+          "p10": 1.0,
+          "p25": 1.0,
+          "p75": 1.0,
+          "p90": 1.0,
+          "iqr": 0.0,
+          "mean": 1.0
+        },
+        "pitch": {
+          "p10": -2.52,
+          "p25": -2.41,
+          "p75": -1.99,
+          "p90": -1.86,
+          "iqr": 0.42,
+          "mean": -2.2
+        },
+        "alt": {
+          "p10": 2701.0,
+          "p25": 5192.0,
+          "p75": 13454.7,
+          "p90": 15479.5,
+          "iqr": 8262.7,
+          "mean": 9203.154
+        },
+        "rpm": {
+          "p10": 2400.0,
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "p90": 2400.0,
+          "iqr": 0.0,
+          "mean": 2400.0
+        },
+        "vs": {
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": -0.0,
+          "p90": -0.0,
+          "iqr": -0.0,
+          "mean": 0.0
+        },
+        "time_since_inject_s": {
+          "p25": 1299.0,
+          "p75": 1703.0
+        }
+      },
+      "crash_probability_in_zone": 0.336,
+      "recovery_probability_in_zone": 0.664,
+      "induced_rule": {
+        "induced_relationship": "v + rpm cascade interaction",
+        "primary_failure": "voltage_regulator",
+        "is_cascade_component": true,
+        "critical_state_combination": {
+          "voltage_range_V": [
+            11.13,
+            11.16
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "pitch_range_deg": [
+            -2.41,
+            -1.99
+          ],
+          "altitude_range_ft": [
+            5192.0,
+            13454.7
+          ],
+          "time_since_inject_s": {
+            "p25": 1299.0,
+            "p75": 1703.0
+          }
+        },
+        "voltage_iqr_V": 0.03,
+        "pump_eff_iqr": 0.0,
+        "crash_probability_in_this_zone": 0.336,
+        "recovery_probability_in_this_zone": 0.664,
+        "interpretation": "For 'voltage_regulator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-1.99\u00b0, altitude=5192.0\u201313454.7 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+        "quality_score": 1.0,
+        "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "cascade_transformer_attention"
+      }
+    }
+  },
+  "emergent_rules": [
+    {
+      "induced_relationship": "v + rpm cascade interaction",
+      "primary_failure": "alternator",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          11.13,
+          11.16
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -2.41,
+          -2.07
+        ],
+        "altitude_range_ft": [
+          5273.1,
+          12064.1
+        ],
+        "time_since_inject_s": {
+          "p25": 1321.0,
+          "p75": 1818.0
+        }
+      },
+      "voltage_iqr_V": 0.03,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.397,
+      "recovery_probability_in_this_zone": 0.603,
+      "interpretation": "For 'alternator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-2.07\u00b0, altitude=5273.1\u201312064.1 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "attitude_indicator",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.887,
+          3.54
+        ],
+        "altitude_range_ft": [
+          4453.525,
+          12584.625
+        ],
+        "time_since_inject_s": {
+          "p25": 215.0,
+          "p75": 677.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.795,
+      "recovery_probability_in_this_zone": 0.205,
+      "interpretation": "For 'attitude_indicator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.887\u00b0\u20133.54\u00b0, altitude=4453.525\u201312584.625 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=188 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "alt + rpm cascade interaction",
+      "primary_failure": "battery",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          0.0,
+          0.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.53,
+          15.438
+        ],
+        "altitude_range_ft": [
+          4449.95,
+          11873.225
+        ],
+        "time_since_inject_s": {
+          "p25": 221.0,
+          "p75": 697.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 1.0,
+      "recovery_probability_in_this_zone": 0.0,
+      "interpretation": "For 'battery' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=0.0\u20130.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.53\u00b0\u201315.438\u00b0, altitude=4449.95\u201311873.225 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "vs + pitch cascade interaction",
+      "primary_failure": "carburetor",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          2.45,
+          3.59
+        ],
+        "altitude_range_ft": [
+          4395.85,
+          12674.85
+        ],
+        "time_since_inject_s": {
+          "p25": 248.0,
+          "p75": 681.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.854,
+      "recovery_probability_in_this_zone": 0.146,
+      "interpretation": "For 'carburetor' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=2.45\u00b0\u20133.59\u00b0, altitude=4395.85\u201312674.85 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=189 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch + alt cascade interaction",
+      "primary_failure": "engine_left",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          11.86,
+          11.92
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          -2.88,
+          0.81
+        ],
+        "altitude_range_ft": [
+          2060.975,
+          12577.025
+        ],
+        "time_since_inject_s": {
+          "p25": 208.0,
+          "p75": 658.0
+        }
+      },
+      "voltage_iqr_V": 0.06,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.233,
+      "recovery_probability_in_this_zone": 0.767,
+      "interpretation": "For 'engine_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.86\u201311.92 V, fuel_flow=0.0\u20130.0 GPH, pitch=-2.88\u00b0\u20130.81\u00b0, altitude=2060.975\u201312577.025 ft. voltage IQR=0.06V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "flaps",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.92,
+          3.58
+        ],
+        "altitude_range_ft": [
+          3783.8,
+          12474.8
+        ],
+        "time_since_inject_s": {
+          "p25": 196.0,
+          "p75": 698.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.781,
+      "recovery_probability_in_this_zone": 0.219,
+      "interpretation": "For 'flaps' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.92\u00b0\u20133.58\u00b0, altitude=3783.8\u201312474.8 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=186 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "alt + rpm cascade interaction",
+      "primary_failure": "fuel_pump",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.94,
+          18.565
+        ],
+        "altitude_range_ft": [
+          2608.45,
+          11554.95
+        ],
+        "time_since_inject_s": {
+          "p25": 250.0,
+          "p75": 651.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 1.0,
+      "recovery_probability_in_this_zone": 0.0,
+      "interpretation": "For 'fuel_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.94\u00b0\u201318.565\u00b0, altitude=2608.45\u201311554.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "alt + rpm cascade interaction",
+      "primary_failure": "fuel_selector",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.772,
+          19.127
+        ],
+        "altitude_range_ft": [
+          3237.425,
+          11592.95
+        ],
+        "time_since_inject_s": {
+          "p25": 241.0,
+          "p75": 670.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 1.0,
+      "recovery_probability_in_this_zone": 0.0,
+      "interpretation": "For 'fuel_selector' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.772\u00b0\u201319.127\u00b0, altitude=3237.425\u201311592.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "fuel_tank_left",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.61,
+          3.54
+        ],
+        "altitude_range_ft": [
+          4372.5,
+          12388.5
+        ],
+        "time_since_inject_s": {
+          "p25": 197.0,
+          "p75": 681.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.747,
+      "recovery_probability_in_this_zone": 0.253,
+      "interpretation": "For 'fuel_tank_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.61\u00b0\u20133.54\u00b0, altitude=4372.5\u201312388.5 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=159 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "fuel_tank_right",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.68,
+          3.5
+        ],
+        "altitude_range_ft": [
+          4152.8,
+          11824.2
+        ],
+        "time_since_inject_s": {
+          "p25": 269.0,
+          "p75": 708.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.791,
+      "recovery_probability_in_this_zone": 0.209,
+      "interpretation": "For 'fuel_tank_right' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.68\u00b0\u20133.5\u00b0, altitude=4152.8\u201311824.2 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=179 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "magnetos",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.51,
+          3.5
+        ],
+        "altitude_range_ft": [
+          5198.1,
+          12939.9
+        ],
+        "time_since_inject_s": {
+          "p25": 194.0,
+          "p75": 691.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.758,
+      "recovery_probability_in_this_zone": 0.242,
+      "interpretation": "For 'magnetos' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.51\u00b0\u20133.5\u00b0, altitude=5198.1\u201312939.9 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=194 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "trim_system",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.78,
+          3.58
+        ],
+        "altitude_range_ft": [
+          4418.0,
+          12351.0
+        ],
+        "time_since_inject_s": {
+          "p25": 282.0,
+          "p75": 656.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.782,
+      "recovery_probability_in_this_zone": 0.218,
+      "interpretation": "For 'trim_system' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.78\u00b0\u20133.58\u00b0, altitude=4418.0\u201312351.0 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=177 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "pitch cascade interaction",
+      "primary_failure": "vacuum_pump",
+      "is_cascade_component": false,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -1.07,
+          3.78
+        ],
+        "altitude_range_ft": [
+          4347.2,
+          13682.4
+        ],
+        "time_since_inject_s": {
+          "p25": 242.0,
+          "p75": 697.0
+        }
+      },
+      "voltage_iqr_V": 0.0,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.252,
+      "recovery_probability_in_this_zone": 0.748,
+      "interpretation": "For 'vacuum_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=-1.07\u00b0\u20133.78\u00b0, altitude=4347.2\u201313682.4 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    },
+    {
+      "induced_relationship": "v + rpm cascade interaction",
+      "primary_failure": "voltage_regulator",
+      "is_cascade_component": true,
+      "critical_state_combination": {
+        "voltage_range_V": [
+          11.13,
+          11.16
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -2.41,
+          -1.99
+        ],
+        "altitude_range_ft": [
+          5192.0,
+          13454.7
+        ],
+        "time_since_inject_s": {
+          "p25": 1299.0,
+          "p75": 1703.0
+        }
+      },
+      "voltage_iqr_V": 0.03,
+      "pump_eff_iqr": 0.0,
+      "crash_probability_in_this_zone": 0.336,
+      "recovery_probability_in_this_zone": 0.664,
+      "interpretation": "For 'voltage_regulator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-1.99\u00b0, altitude=5192.0\u201313454.7 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories.",
+      "quality_score": 1.0,
+      "attention_type": "CASCADE_WINDOW (no nominal flight contamination)",
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "cascade_transformer_attention"
+    }
+  ]
+}

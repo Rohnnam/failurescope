@@ -1,0 +1,2980 @@
+{
+  "meta": {
+    "model_val_acc": 0.959210407895921,
+    "model_epoch": 1,
+    "extractor_version": "v3",
+    "min_cascade_ttc_s": 300.0,
+    "total_cat_analysed": 2200,
+    "total_rec_contrast": 400,
+    "n_components": 14,
+    "n_emergent_rules": 14,
+    "n_cross_patterns": 0,
+    "layer3_status": "complete",
+    "next_step": "Layer 4 \u2014 Failure Mode Discovery + NTSB cross-reference"
+  },
+  "component_index": {
+    "alternator": {
+      "total_long_cascade_in_val": 3546,
+      "sampled": 200
+    },
+    "battery": {
+      "total_long_cascade_in_val": 3561,
+      "sampled": 200
+    },
+    "fuel_pump": {
+      "total_long_cascade_in_val": 3453,
+      "sampled": 200
+    },
+    "engine_left": {
+      "total_long_cascade_in_val": 1343,
+      "sampled": 200
+    },
+    "vacuum_pump": {
+      "total_long_cascade_in_val": 2379,
+      "sampled": 100
+    },
+    "fuel_selector": {
+      "total_long_cascade_in_val": 3425,
+      "sampled": 200
+    },
+    "magnetos": {
+      "total_long_cascade_in_val": 231,
+      "sampled": 200
+    },
+    "carburetor": {
+      "total_long_cascade_in_val": 1511,
+      "sampled": 200
+    },
+    "voltage_regulator": {
+      "total_long_cascade_in_val": 3082,
+      "sampled": 200
+    },
+    "fuel_tank_left": {
+      "total_long_cascade_in_val": 245,
+      "sampled": 100
+    },
+    "fuel_tank_right": {
+      "total_long_cascade_in_val": 241,
+      "sampled": 100
+    },
+    "attitude_indicator": {
+      "total_long_cascade_in_val": 226,
+      "sampled": 100
+    },
+    "flaps": {
+      "total_long_cascade_in_val": 243,
+      "sampled": 100
+    },
+    "trim_system": {
+      "total_long_cascade_in_val": 231,
+      "sampled": 100
+    }
+  },
+  "variable_importance_global": [
+    {
+      "variable": "alt",
+      "mean_attention": 0.013,
+      "n_components": 14
+    },
+    {
+      "variable": "pitch",
+      "mean_attention": 0.012,
+      "n_components": 14
+    },
+    {
+      "variable": "v",
+      "mean_attention": 0.011,
+      "n_components": 14
+    },
+    {
+      "variable": "time_since_failure",
+      "mean_attention": 0.01,
+      "n_components": 14
+    },
+    {
+      "variable": "ff",
+      "mean_attention": 0.009,
+      "n_components": 14
+    },
+    {
+      "variable": "rpm",
+      "mean_attention": 0.008,
+      "n_components": 14
+    }
+  ],
+  "per_component": {
+    "alternator": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.918,
+        "MID_CASCADE": 0.077,
+        "TERMINAL": 0.005
+      },
+      "quality_score": 0.997,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        }
+      ],
+      "first_cascade_t_median_s": 560.0,
+      "most_common_time_between_failures": "<1 minute (5s)",
+      "most_common_cascade_events": [
+        {
+          "event": "alternator",
+          "fraction": 0.92
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7327.25,
+          "p75": 14668.6,
+          "mean": 10799.95,
+          "iqr": 7341.35
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.64,
+          "p75": 17.86,
+          "mean": 16.05,
+          "iqr": 4.22
+        },
+        "time_window_s": {
+          "p25": 90.0,
+          "p75": 200.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "v + alt interaction",
+        "primary_failure": "alternator",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7327.25,
+            14668.6
+          ],
+          "time_between_failures": "<1 minute (5s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'alternator' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7327.25\u201314668.6 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: v(attn=0.02), alt(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.997,
+        "top_attention_variables": [
+          {
+            "variable": "v",
+            "mean_attention": 0.018
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.018
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.015
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.014
+          }
+        ],
+        "most_common_cascade_events": [
+          "alternator"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "attitude_indicator": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.43,
+        "MID_CASCADE": 0.517,
+        "TERMINAL": 0.052
+      },
+      "quality_score": 0.968,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 450.0,
+      "most_common_time_between_failures": "<1 minute (8s)",
+      "most_common_cascade_events": [
+        {
+          "event": "attitude_indicator",
+          "fraction": 0.73
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 0.49,
+          "p75": 5.0,
+          "mean": 3.26,
+          "iqr": 4.5
+        },
+        "alt": {
+          "p25": 8726.15,
+          "p75": 16500.0,
+          "mean": 12242.42,
+          "iqr": 7773.85
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 6.49,
+          "p75": 16.3,
+          "mean": 11.51,
+          "iqr": 9.82
+        },
+        "time_window_s": {
+          "p25": 110.0,
+          "p75": 1340.0
+        }
+      },
+      "crash_probability_in_zone": 0.338,
+      "recovery_probability_in_zone": 0.662,
+      "induced_rule": {
+        "induced_relationship": "pitch + alt interaction",
+        "primary_failure": "attitude_indicator",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            0.49,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            8726.15,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (8s)"
+        },
+        "crash_probability_in_this_zone": 0.338,
+        "recovery_probability_in_this_zone": 0.662,
+        "interpretation": "For 'attitude_indicator' failures: when voltage=14.0\u201314.0 V, pitch=0.49\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8726.15\u201316500.0 ft (window t=110.0\u20131340.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.968,
+        "top_attention_variables": [
+          {
+            "variable": "pitch",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "attitude_indicator"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "battery": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.943,
+        "MID_CASCADE": 0.047,
+        "TERMINAL": 0.01
+      },
+      "quality_score": 0.994,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        }
+      ],
+      "first_cascade_t_median_s": 600.0,
+      "most_common_time_between_failures": "<1 minute (9s)",
+      "most_common_cascade_events": [
+        {
+          "event": "battery",
+          "fraction": 0.94
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7037.65,
+          "p75": 13881.65,
+          "mean": 10297.58,
+          "iqr": 6844.0
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 14.11,
+          "p75": 18.05,
+          "mean": 16.33,
+          "iqr": 3.94
+        },
+        "time_window_s": {
+          "p25": 100.0,
+          "p75": 200.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "battery",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7037.65,
+            13881.65
+          ],
+          "time_between_failures": "<1 minute (9s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'battery' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7037.65\u201313881.65 ft (window t=100.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.994,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.019
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.014
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.014
+          }
+        ],
+        "most_common_cascade_events": [
+          "battery"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "carburetor": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.88,
+        "MID_CASCADE": 0.089,
+        "TERMINAL": 0.03
+      },
+      "quality_score": 0.981,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.013
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.013
+        }
+      ],
+      "first_cascade_t_median_s": 565.0,
+      "most_common_time_between_failures": "<1 minute (4s)",
+      "most_common_cascade_events": [
+        {
+          "event": "carburetor",
+          "fraction": 0.9
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 4.98,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7022.18,
+          "p75": 14712.55,
+          "mean": 10519.36,
+          "iqr": 7690.37
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2395.32,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.67,
+          "p75": 18.01,
+          "mean": 16.05,
+          "iqr": 4.34
+        },
+        "time_window_s": {
+          "p25": 70.0,
+          "p75": 190.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "v + pitch interaction",
+        "primary_failure": "carburetor",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7022.18,
+            14712.55
+          ],
+          "time_between_failures": "<1 minute (4s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'carburetor' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7022.18\u201314712.55 ft (window t=70.0\u2013190.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: v(attn=0.02), pitch(attn=0.02), alt(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.981,
+        "top_attention_variables": [
+          {
+            "variable": "v",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.014
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.013
+          }
+        ],
+        "most_common_cascade_events": [
+          "carburetor"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "engine_left": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.887,
+        "MID_CASCADE": 0.105,
+        "TERMINAL": 0.007
+      },
+      "quality_score": 0.995,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 545.0,
+      "most_common_time_between_failures": "<1 minute (7s)",
+      "most_common_cascade_events": [
+        {
+          "event": "engine_left",
+          "fraction": 0.89
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 6809.48,
+          "p75": 14568.38,
+          "mean": 10536.6,
+          "iqr": 7758.9
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.69,
+          "p75": 18.14,
+          "mean": 16.11,
+          "iqr": 4.45
+        },
+        "time_window_s": {
+          "p25": 70.0,
+          "p75": 190.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "engine_left",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            6809.48,
+            14568.38
+          ],
+          "time_between_failures": "<1 minute (7s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'engine_left' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=6809.48\u201314568.38 ft (window t=70.0\u2013190.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.995,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.019
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.014
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.014
+          }
+        ],
+        "most_common_cascade_events": [
+          "engine_left"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "flaps": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.318,
+        "MID_CASCADE": 0.594,
+        "TERMINAL": 0.089
+      },
+      "quality_score": 0.947,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 410.0,
+      "most_common_time_between_failures": "<1 minute (2s)",
+      "most_common_cascade_events": [
+        {
+          "event": "flaps",
+          "fraction": 0.67
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": -1.8,
+          "p75": 5.0,
+          "mean": 2.56,
+          "iqr": 6.8
+        },
+        "alt": {
+          "p25": 7766.15,
+          "p75": 16500.0,
+          "mean": 11985.57,
+          "iqr": 8733.85
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 0.0,
+          "p75": 16.25,
+          "mean": 10.08,
+          "iqr": 16.25
+        },
+        "time_window_s": {
+          "p25": 120.0,
+          "p75": 1350.0
+        }
+      },
+      "crash_probability_in_zone": 0.338,
+      "recovery_probability_in_zone": 0.662,
+      "induced_rule": {
+        "induced_relationship": "pitch + alt interaction",
+        "primary_failure": "flaps",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            -1.8,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7766.15,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (2s)"
+        },
+        "crash_probability_in_this_zone": 0.338,
+        "recovery_probability_in_this_zone": 0.662,
+        "interpretation": "For 'flaps' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7766.15\u201316500.0 ft (window t=120.0\u20131350.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.947,
+        "top_attention_variables": [
+          {
+            "variable": "pitch",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "flaps"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "fuel_pump": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.936,
+        "MID_CASCADE": 0.054,
+        "TERMINAL": 0.01
+      },
+      "quality_score": 0.994,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        }
+      ],
+      "first_cascade_t_median_s": 580.0,
+      "most_common_time_between_failures": "<1 minute (2s)",
+      "most_common_cascade_events": [
+        {
+          "event": "fuel_pump",
+          "fraction": 0.94
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 6965.4,
+          "p75": 14712.9,
+          "mean": 10590.36,
+          "iqr": 7747.5
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.63,
+          "p75": 18.08,
+          "mean": 16.18,
+          "iqr": 4.45
+        },
+        "time_window_s": {
+          "p25": 100.0,
+          "p75": 200.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "fuel_pump",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            6965.4,
+            14712.9
+          ],
+          "time_between_failures": "<1 minute (2s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'fuel_pump' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=6965.4\u201314712.9 ft (window t=100.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.994,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.02
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.015
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.015
+          }
+        ],
+        "most_common_cascade_events": [
+          "fuel_pump"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "fuel_selector": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.928,
+        "MID_CASCADE": 0.064,
+        "TERMINAL": 0.009
+      },
+      "quality_score": 0.995,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        }
+      ],
+      "first_cascade_t_median_s": 590.0,
+      "most_common_time_between_failures": "<1 minute (5s)",
+      "most_common_cascade_events": [
+        {
+          "event": "fuel_selector",
+          "fraction": 0.93
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7318.07,
+          "p75": 15128.6,
+          "mean": 10939.72,
+          "iqr": 7810.53
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.43,
+          "p75": 17.84,
+          "mean": 15.99,
+          "iqr": 4.41
+        },
+        "time_window_s": {
+          "p25": 90.0,
+          "p75": 200.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "fuel_selector",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7318.07,
+            15128.6
+          ],
+          "time_between_failures": "<1 minute (5s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'fuel_selector' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7318.07\u201315128.6 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.995,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.02
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.017
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.014
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.014
+          }
+        ],
+        "most_common_cascade_events": [
+          "fuel_selector"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "fuel_tank_left": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.276,
+        "MID_CASCADE": 0.632,
+        "TERMINAL": 0.092
+      },
+      "quality_score": 0.945,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.003
+        }
+      ],
+      "first_cascade_t_median_s": 410.0,
+      "most_common_time_between_failures": "<1 minute (2s)",
+      "most_common_cascade_events": [
+        {
+          "event": "fuel_tank_left",
+          "fraction": 0.57
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": -1.8,
+          "p75": 5.0,
+          "mean": 3.02,
+          "iqr": 6.8
+        },
+        "alt": {
+          "p25": 8549.62,
+          "p75": 16500.0,
+          "mean": 12463.22,
+          "iqr": 7950.38
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 0.54,
+          "p75": 15.52,
+          "mean": 10.64,
+          "iqr": 14.98
+        },
+        "time_window_s": {
+          "p25": 130.0,
+          "p75": 1360.0
+        }
+      },
+      "crash_probability_in_zone": 0.338,
+      "recovery_probability_in_zone": 0.662,
+      "induced_rule": {
+        "induced_relationship": "v + pitch interaction",
+        "primary_failure": "fuel_tank_left",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            -1.8,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            8549.62,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (2s)"
+        },
+        "crash_probability_in_this_zone": 0.338,
+        "recovery_probability_in_this_zone": 0.662,
+        "interpretation": "For 'fuel_tank_left' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8549.62\u201316500.0 ft (window t=130.0\u20131360.0 s): crash probability is 34%. Top attention variables: v(attn=0.00), pitch(attn=0.00), ff(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.945,
+        "top_attention_variables": [
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "fuel_tank_left"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "fuel_tank_right": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.447,
+        "MID_CASCADE": 0.49,
+        "TERMINAL": 0.063
+      },
+      "quality_score": 0.962,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 450.0,
+      "most_common_time_between_failures": "<1 minute (1s)",
+      "most_common_cascade_events": [
+        {
+          "event": "fuel_tank_right",
+          "fraction": 0.69
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 3.49,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 9191.6,
+          "p75": 16500.0,
+          "mean": 12472.1,
+          "iqr": 7308.4
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 12.49,
+          "p75": 16.32,
+          "mean": 11.83,
+          "iqr": 3.83
+        },
+        "time_window_s": {
+          "p25": 120.0,
+          "p75": 1340.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + pitch interaction",
+        "primary_failure": "fuel_tank_right",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            9191.6,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (1s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'fuel_tank_right' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=9191.6\u201316500.0 ft (window t=120.0\u20131340.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.01), pitch(attn=0.01), v(attn=0.00). n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.962,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "fuel_tank_right"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "magnetos": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.286,
+        "MID_CASCADE": 0.613,
+        "TERMINAL": 0.102
+      },
+      "quality_score": 0.939,
+      "variable_attention_ranking": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 435.0,
+      "most_common_time_between_failures": "<1 minute (2s)",
+      "most_common_cascade_events": [
+        {
+          "event": "magnetos",
+          "fraction": 0.62
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": -1.8,
+          "p75": 5.0,
+          "mean": 2.9,
+          "iqr": 6.8
+        },
+        "alt": {
+          "p25": 8870.4,
+          "p75": 16500.0,
+          "mean": 12296.1,
+          "iqr": 7629.6
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 0.07,
+          "p75": 16.26,
+          "mean": 10.67,
+          "iqr": 16.19
+        },
+        "time_window_s": {
+          "p25": 130.0,
+          "p75": 1360.0
+        }
+      },
+      "crash_probability_in_zone": 0.338,
+      "recovery_probability_in_zone": 0.662,
+      "induced_rule": {
+        "induced_relationship": "pitch + alt interaction",
+        "primary_failure": "magnetos",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            -1.8,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            8870.4,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (2s)"
+        },
+        "crash_probability_in_this_zone": 0.338,
+        "recovery_probability_in_this_zone": 0.662,
+        "interpretation": "For 'magnetos' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8870.4\u201316500.0 ft (window t=130.0\u20131360.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.939,
+        "top_attention_variables": [
+          {
+            "variable": "pitch",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "alt",
+            "mean_attention": 0.005
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "magnetos"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "trim_system": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.357,
+        "MID_CASCADE": 0.542,
+        "TERMINAL": 0.101
+      },
+      "quality_score": 0.939,
+      "variable_attention_ranking": [
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.004
+        }
+      ],
+      "first_cascade_t_median_s": 510.0,
+      "most_common_time_between_failures": "<1 minute (7s)",
+      "most_common_cascade_events": [
+        {
+          "event": "trim_system",
+          "fraction": 0.67
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 1.29,
+          "p75": 5.0,
+          "mean": 3.28,
+          "iqr": 3.71
+        },
+        "alt": {
+          "p25": 10271.4,
+          "p75": 16500.0,
+          "mean": 13050.01,
+          "iqr": 6228.6
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 7.75,
+          "p75": 15.77,
+          "mean": 11.13,
+          "iqr": 8.02
+        },
+        "time_window_s": {
+          "p25": 120.0,
+          "p75": 1360.0
+        }
+      },
+      "crash_probability_in_zone": 0.338,
+      "recovery_probability_in_zone": 0.662,
+      "induced_rule": {
+        "induced_relationship": "v + rpm interaction",
+        "primary_failure": "trim_system",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            1.29,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            10271.4,
+            16500.0
+          ],
+          "time_between_failures": "<1 minute (7s)"
+        },
+        "crash_probability_in_this_zone": 0.338,
+        "recovery_probability_in_this_zone": 0.662,
+        "interpretation": "For 'trim_system' failures: when voltage=14.0\u201314.0 V, pitch=1.29\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=10271.4\u201316500.0 ft (window t=120.0\u20131360.0 s): crash probability is 34%. Top attention variables: v(attn=0.00), rpm(attn=0.00), pitch(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.939,
+        "top_attention_variables": [
+          {
+            "variable": "v",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.004
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.004
+          }
+        ],
+        "most_common_cascade_events": [
+          "trim_system"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "vacuum_pump": {
+      "n_trajectories": 100,
+      "n_min_cascade_ttc": 100,
+      "is_cascade_component": false,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.869,
+        "MID_CASCADE": 0.104,
+        "TERMINAL": 0.028
+      },
+      "quality_score": 0.984,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.003
+        }
+      ],
+      "first_cascade_t_median_s": 610.0,
+      "most_common_time_between_failures": "<1 minute (2s)",
+      "most_common_cascade_events": [
+        {
+          "event": "vacuum_pump",
+          "fraction": 0.91
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 4.81,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7324.8,
+          "p75": 14128.2,
+          "mean": 10603.94,
+          "iqr": 6803.4
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 13.84,
+          "p75": 17.82,
+          "mean": 15.77,
+          "iqr": 3.98
+        },
+        "time_window_s": {
+          "p25": 100.0,
+          "p75": 210.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "vacuum_pump",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7324.8,
+            14128.2
+          ],
+          "time_between_failures": "<1 minute (2s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'vacuum_pump' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7324.8\u201314128.2 ft (window t=100.0\u2013210.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=100 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.984,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.018
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "time_since_failure",
+            "mean_attention": 0.015
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.005
+          }
+        ],
+        "most_common_cascade_events": [
+          "vacuum_pump"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    },
+    "voltage_regulator": {
+      "n_trajectories": 200,
+      "n_min_cascade_ttc": 200,
+      "is_cascade_component": true,
+      "timing_fractions": {
+        "EARLY_CASCADE": 0.901,
+        "MID_CASCADE": 0.088,
+        "TERMINAL": 0.011
+      },
+      "quality_score": 0.993,
+      "variable_attention_ranking": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.016
+        }
+      ],
+      "first_cascade_t_median_s": 520.0,
+      "most_common_time_between_failures": "<1 minute (1s)",
+      "most_common_cascade_events": [
+        {
+          "event": "voltage_regulator",
+          "fraction": 0.91
+        }
+      ],
+      "kill_zone": {
+        "v": {
+          "p25": 14.0,
+          "p75": 14.0,
+          "mean": 14.0,
+          "iqr": 0.0
+        },
+        "pump_eff": {
+          "p25": 1.0,
+          "p75": 1.0,
+          "mean": 1.0,
+          "iqr": 0.0
+        },
+        "pitch": {
+          "p25": 5.0,
+          "p75": 5.0,
+          "mean": 5.0,
+          "iqr": 0.0
+        },
+        "alt": {
+          "p25": 7231.7,
+          "p75": 14018.3,
+          "mean": 10545.32,
+          "iqr": 6786.6
+        },
+        "rpm": {
+          "p25": 2400.0,
+          "p75": 2400.0,
+          "mean": 2400.0,
+          "iqr": 0.0
+        },
+        "ff": {
+          "p25": 11.0,
+          "p75": 11.0,
+          "mean": 11.0,
+          "iqr": 0.0
+        },
+        "vs": {
+          "p25": 14.04,
+          "p75": 17.94,
+          "mean": 16.22,
+          "iqr": 3.9
+        },
+        "time_window_s": {
+          "p25": 90.0,
+          "p75": 200.0
+        }
+      },
+      "crash_probability_in_zone": null,
+      "recovery_probability_in_zone": null,
+      "induced_rule": {
+        "induced_relationship": "alt + v interaction",
+        "primary_failure": "voltage_regulator",
+        "critical_state_combination": {
+          "voltage_range_V": [
+            14.0,
+            14.0
+          ],
+          "pitch_range_deg": [
+            5.0,
+            5.0
+          ],
+          "fuel_flow_range_gph": [
+            11.0,
+            11.0
+          ],
+          "altitude_range_ft": [
+            7231.7,
+            14018.3
+          ],
+          "time_between_failures": "<1 minute (1s)"
+        },
+        "crash_probability_in_this_zone": null,
+        "recovery_probability_in_this_zone": null,
+        "interpretation": "For 'voltage_regulator' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7231.7\u201314018.3 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+        "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+        "quality_score": 0.993,
+        "top_attention_variables": [
+          {
+            "variable": "alt",
+            "mean_attention": 0.02
+          },
+          {
+            "variable": "v",
+            "mean_attention": 0.019
+          },
+          {
+            "variable": "pitch",
+            "mean_attention": 0.019
+          },
+          {
+            "variable": "rpm",
+            "mean_attention": 0.016
+          },
+          {
+            "variable": "ff",
+            "mean_attention": 0.016
+          }
+        ],
+        "most_common_cascade_events": [
+          "voltage_regulator"
+        ],
+        "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+        "source": "attention_weight_analysis_v3"
+      }
+    }
+  },
+  "cross_component_patterns": [],
+  "emergent_rules": [
+    {
+      "induced_relationship": "v + alt interaction",
+      "primary_failure": "alternator",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7327.25,
+          14668.6
+        ],
+        "time_between_failures": "<1 minute (5s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'alternator' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7327.25\u201314668.6 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: v(attn=0.02), alt(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.997,
+      "top_attention_variables": [
+        {
+          "variable": "v",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        }
+      ],
+      "most_common_cascade_events": [
+        "alternator"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "engine_left",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          6809.48,
+          14568.38
+        ],
+        "time_between_failures": "<1 minute (7s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'engine_left' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=6809.48\u201314568.38 ft (window t=70.0\u2013190.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.995,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        }
+      ],
+      "most_common_cascade_events": [
+        "engine_left"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "fuel_selector",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7318.07,
+          15128.6
+        ],
+        "time_between_failures": "<1 minute (5s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'fuel_selector' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7318.07\u201315128.6 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.995,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        }
+      ],
+      "most_common_cascade_events": [
+        "fuel_selector"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "battery",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7037.65,
+          13881.65
+        ],
+        "time_between_failures": "<1 minute (9s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'battery' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7037.65\u201313881.65 ft (window t=100.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.994,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.014
+        }
+      ],
+      "most_common_cascade_events": [
+        "battery"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "fuel_pump",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          6965.4,
+          14712.9
+        ],
+        "time_between_failures": "<1 minute (2s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'fuel_pump' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=6965.4\u201314712.9 ft (window t=100.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.994,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.017
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        }
+      ],
+      "most_common_cascade_events": [
+        "fuel_pump"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "voltage_regulator",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7231.7,
+          14018.3
+        ],
+        "time_between_failures": "<1 minute (1s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'voltage_regulator' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7231.7\u201314018.3 ft (window t=90.0\u2013200.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.993,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.02
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.019
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.016
+        }
+      ],
+      "most_common_cascade_events": [
+        "voltage_regulator"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + v interaction",
+      "primary_failure": "vacuum_pump",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7324.8,
+          14128.2
+        ],
+        "time_between_failures": "<1 minute (2s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'vacuum_pump' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7324.8\u201314128.2 ft (window t=100.0\u2013210.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.02), v(attn=0.02), pitch(attn=0.02). n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.984,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.018
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.015
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.005
+        }
+      ],
+      "most_common_cascade_events": [
+        "vacuum_pump"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "v + pitch interaction",
+      "primary_failure": "carburetor",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7022.18,
+          14712.55
+        ],
+        "time_between_failures": "<1 minute (4s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'carburetor' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7022.18\u201314712.55 ft (window t=70.0\u2013190.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: v(attn=0.02), pitch(attn=0.02), alt(attn=0.02). n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.981,
+      "top_attention_variables": [
+        {
+          "variable": "v",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.016
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.014
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.013
+        }
+      ],
+      "most_common_cascade_events": [
+        "carburetor"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "pitch + alt interaction",
+      "primary_failure": "attitude_indicator",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          0.49,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          8726.15,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (8s)"
+      },
+      "crash_probability_in_this_zone": 0.338,
+      "recovery_probability_in_this_zone": 0.662,
+      "interpretation": "For 'attitude_indicator' failures: when voltage=14.0\u201314.0 V, pitch=0.49\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8726.15\u201316500.0 ft (window t=110.0\u20131340.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.968,
+      "top_attention_variables": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "attitude_indicator"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "alt + pitch interaction",
+      "primary_failure": "fuel_tank_right",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          5.0,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          9191.6,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (1s)"
+      },
+      "crash_probability_in_this_zone": null,
+      "recovery_probability_in_this_zone": null,
+      "interpretation": "For 'fuel_tank_right' failures: when voltage=14.0\u201314.0 V, pitch=5.0\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=9191.6\u201316500.0 ft (window t=120.0\u20131340.0 s): Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. Top attention variables: alt(attn=0.01), pitch(attn=0.01), v(attn=0.00). n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.962,
+      "top_attention_variables": [
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "fuel_tank_right"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "pitch + alt interaction",
+      "primary_failure": "flaps",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          -1.8,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          7766.15,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (2s)"
+      },
+      "crash_probability_in_this_zone": 0.338,
+      "recovery_probability_in_this_zone": 0.662,
+      "interpretation": "For 'flaps' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=7766.15\u201316500.0 ft (window t=120.0\u20131350.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.947,
+      "top_attention_variables": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "flaps"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "v + pitch interaction",
+      "primary_failure": "fuel_tank_left",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          -1.8,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          8549.62,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (2s)"
+      },
+      "crash_probability_in_this_zone": 0.338,
+      "recovery_probability_in_this_zone": 0.662,
+      "interpretation": "For 'fuel_tank_left' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8549.62\u201316500.0 ft (window t=130.0\u20131360.0 s): crash probability is 34%. Top attention variables: v(attn=0.00), pitch(attn=0.00), ff(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.945,
+      "top_attention_variables": [
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "fuel_tank_left"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "pitch + alt interaction",
+      "primary_failure": "magnetos",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          -1.8,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          8870.4,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (2s)"
+      },
+      "crash_probability_in_this_zone": 0.338,
+      "recovery_probability_in_this_zone": 0.662,
+      "interpretation": "For 'magnetos' failures: when voltage=14.0\u201314.0 V, pitch=-1.8\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=8870.4\u201316500.0 ft (window t=130.0\u20131360.0 s): crash probability is 34%. Top attention variables: pitch(attn=0.01), alt(attn=0.01), v(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=200 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.939,
+      "top_attention_variables": [
+        {
+          "variable": "pitch",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "alt",
+          "mean_attention": 0.005
+        },
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "magnetos"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    },
+    {
+      "induced_relationship": "v + rpm interaction",
+      "primary_failure": "trim_system",
+      "critical_state_combination": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "pitch_range_deg": [
+          1.29,
+          5.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "altitude_range_ft": [
+          10271.4,
+          16500.0
+        ],
+        "time_between_failures": "<1 minute (7s)"
+      },
+      "crash_probability_in_this_zone": 0.338,
+      "recovery_probability_in_this_zone": 0.662,
+      "interpretation": "For 'trim_system' failures: when voltage=14.0\u201314.0 V, pitch=1.29\u00b0\u20135.0\u00b0, fuel_flow=11.0\u201311.0 GPH, altitude=10271.4\u201316500.0 ft (window t=120.0\u20131360.0 s): crash probability is 34%. Top attention variables: v(attn=0.00), rpm(attn=0.00), pitch(attn=0.00). Attention character: INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious. n=100 trajectories (all ttc>300s).",
+      "attention_quality": "INDUCED \u2014 model attends to precursor states BEFORE cascade is obvious",
+      "quality_score": 0.939,
+      "top_attention_variables": [
+        {
+          "variable": "v",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "rpm",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "pitch",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "ff",
+          "mean_attention": 0.004
+        },
+        {
+          "variable": "time_since_failure",
+          "mean_attention": 0.004
+        }
+      ],
+      "most_common_cascade_events": [
+        "trim_system"
+      ],
+      "validation_status": "PENDING \u2014 Method 2 (physics) + Method 3 (NTSB)",
+      "source": "attention_weight_analysis_v3"
+    }
+  ]
+}

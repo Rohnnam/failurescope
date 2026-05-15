@@ -1,0 +1,1796 @@
+{
+  "meta": {
+    "generated_at": "2026-05-14T11:54:26Z",
+    "layer": "Layer 4 \u2014 Failure Mode Discovery + NTSB Validation",
+    "source_model": "cascade_transformer + snapshot_xgboost (Layer 3)",
+    "aircraft": "Cessna 182",
+    "n_trajectories": 500000,
+    "physics_threshold": 80,
+    "ntsb_threshold": 70,
+    "combined_threshold": 60,
+    "validation_methods": [
+      "Method 2: Physics Soundness",
+      "Method 3: Historical Fit"
+    ],
+    "ntsb_disclaimer": "NTSB accident IDs in this file were matched against live NTSB data. Accident IDs cited in early project documentation (WPR13FA089, ANC12WA034, SFO08CA123) were illustrative examples and have not been verified. All matches here are from fresh live searches."
+  },
+  "summary": {
+    "n_total_rules": 14,
+    "n_above_threshold": 13,
+    "n_validated": 9,
+    "n_likely_real": 4,
+    "n_physics_only": 0,
+    "n_possible": 1,
+    "n_insufficient_evidence": 0,
+    "n_induced_classification": 7,
+    "n_novel_classification": 6,
+    "combined_threshold": 60,
+    "note": "Findings include all rules regardless of threshold. 'passed_threshold' field indicates whether combined_confidence >= 60. 'PHYSICS_ONLY' rules have ntsb_score=0 \u2014 physics validation passed but no historical accident confirmation found."
+  },
+  "findings": [
+    {
+      "failure_mode": "carburetor_cascade_induced",
+      "primary_failure": "carburetor",
+      "classification": "INDUCED",
+      "physics_score": 100,
+      "ntsb_score": 93,
+      "combined_confidence": 93.0,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "FAA AC 61-23C"
+      ],
+      "ntsb_matching_accidents": [
+        "20120111X05220",
+        "20101003X04946",
+        "20100419X50320"
+      ],
+      "match_quality": {
+        "20120111X05220": 93,
+        "20101003X04946": 85,
+        "20100419X50320": 83
+      },
+      "interpretation": "DURING CASCADE: For 'carburetor' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=2.45\u00b0\u20133.59\u00b0, altitude=4395.85\u201312674.85 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=189 trajectories. | AT INJECTION (swiss cheese): For 'carburetor' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.836), fuel_total_at_inject(contrast=7.671), pump_eff_at_inject(contrast=0.917). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R011 (FAA AC 61-23C). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 3-variable interaction (vs \u00d7 pitch \u00d7 alt) with pilot state (fatigue + fuel_total_at_inject + pump_eff_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "vs",
+        "pitch",
+        "alt"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "fuel_total_at_inject",
+        "pump_eff_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          2.45,
+          3.59
+        ],
+        "altitude_range_ft": [
+          4395.85,
+          12674.85
+        ],
+        "time_since_inject_s": {
+          "p25": 248.0,
+          "p75": 681.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.916,
+              1.0
+            ],
+            "rec_range": [
+              0.359,
+              0.844
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.26,
+              7.84
+            ],
+            "rec_range": [
+              18.665,
+              45.975
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.854,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "carburetor_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(vs \u00d7 pitch \u00d7 alt) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.92",
+          "crash_probability": 0.854,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['vs', 'pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "carburetor_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(vs \u00d7 pitch \u00d7 alt) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.683,
+          "physical_basis": "More time available but ['vs', 'pitch', 'alt'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(vs \u00d7 pitch \u00d7 alt) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject)",
+      "l1_related_rules": [
+        "R011"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R011']",
+        "Altitude kill zone [4396\u201312675 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [2.5\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.85 >= HIGH alt crash_p=0.68 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['FAA AC 61-23C']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "fuel_selector_cascade_induced",
+      "primary_failure": "fuel_selector",
+      "classification": "INDUCED",
+      "physics_score": 100,
+      "ntsb_score": 90,
+      "combined_confidence": 90.0,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "POH \u00a74.2"
+      ],
+      "ntsb_matching_accidents": [
+        "20091022X01008",
+        "20100809X15745",
+        "20080714X01030"
+      ],
+      "match_quality": {
+        "20091022X01008": 90,
+        "20100809X15745": 90,
+        "20080714X01030": 83
+      },
+      "interpretation": "DURING CASCADE: For 'fuel_selector' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.772\u00b0\u201319.127\u00b0, altitude=3237.425\u201311592.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'fuel_selector' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.649), alt_at_inject(contrast=3.563), vs_at_inject(contrast=2.835). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.02. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R012 (POH \u00a74.2). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 4-variable interaction (alt \u00d7 rpm \u00d7 vs \u00d7 pitch) with pilot state (fatigue + alt_at_inject + vs_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "alt",
+        "rpm",
+        "vs",
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "alt_at_inject",
+        "vs_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.772,
+          19.127
+        ],
+        "altitude_range_ft": [
+          3237.425,
+          11592.95
+        ],
+        "time_since_inject_s": {
+          "p25": 241.0,
+          "p75": 670.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.59,
+              0.941
+            ],
+            "rec_range": [
+              0.216,
+              0.431
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3263.9,
+              11003.801
+            ],
+            "rec_range": [
+              8055.1,
+              14273.301
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.87,
+              -26.69
+            ],
+            "rec_range": [
+              -27.94,
+              -25.6
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 1.0,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "fuel_selector_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.59",
+          "crash_probability": 1.0,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['alt', 'rpm'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "fuel_selector_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.8,
+          "physical_basis": "More time available but ['alt', 'rpm', 'vs', 'pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject)",
+      "l1_related_rules": [
+        "R012"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R012']",
+        "Altitude kill zone [3237\u201311593 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [7.8\u00b0\u201319.1\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.59\u20130.94] > recoverable [0.22\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['POH \u00a74.2']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "fuel_pump_cascade_induced",
+      "primary_failure": "fuel_pump",
+      "classification": "INDUCED",
+      "physics_score": 100,
+      "ntsb_score": 90,
+      "combined_confidence": 90.0,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "FAA AC 43.13-1B",
+        "POH \u00a77.1"
+      ],
+      "ntsb_matching_accidents": [
+        "20080609X00813",
+        "20100621X53342",
+        "20101025X62111"
+      ],
+      "match_quality": {
+        "20080609X00813": 90,
+        "20100621X53342": 90,
+        "20101025X62111": 90
+      },
+      "interpretation": "DURING CASCADE: For 'fuel_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.94\u00b0\u201318.565\u00b0, altitude=2608.45\u201311554.95 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'fuel_pump' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.743), alt_at_inject(contrast=3.534), vs_at_inject(contrast=2.752). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.01. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "alt",
+        "rpm",
+        "vs",
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "alt_at_inject",
+        "vs_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.94,
+          18.565
+        ],
+        "altitude_range_ft": [
+          2608.45,
+          11554.95
+        ],
+        "time_since_inject_s": {
+          "p25": 250.0,
+          "p75": 651.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.589,
+              0.944
+            ],
+            "rec_range": [
+              0.221,
+              0.43
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3334.4,
+              11252.7
+            ],
+            "rec_range": [
+              8183.75,
+              14146.199
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.83,
+              -26.61
+            ],
+            "rec_range": [
+              -27.89,
+              -25.66
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 1.0,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "fuel_pump_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.59",
+          "crash_probability": 1.0,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['alt', 'rpm'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "fuel_pump_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.8,
+          "physical_basis": "More time available but ['alt', 'rpm', 'vs', 'pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R005']",
+        "Altitude kill zone [2608\u201311555 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [7.9\u00b0\u201318.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.59\u20130.94] > recoverable [0.22\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['FAA AC 43.13-1B', 'POH \u00a77.1']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": "String mismatch: fuel_pump relates to pump_fail/pump_degrade triggers",
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "attitude_indicator_cascade_novel",
+      "primary_failure": "attitude_indicator",
+      "classification": "NOVEL",
+      "physics_score": 89,
+      "ntsb_score": 97,
+      "combined_confidence": 86.3,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20110118X70638",
+        "20150820X12626",
+        "20101028X12506"
+      ],
+      "match_quality": {
+        "20110118X70638": 97,
+        "20150820X12626": 89,
+        "20101028X12506": 87
+      },
+      "interpretation": "DURING CASCADE: For 'attitude_indicator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.887\u00b0\u20133.54\u00b0, altitude=4453.525\u201312584.625 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=188 trajectories. | AT INJECTION (swiss cheese): For 'attitude_indicator' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=7.910), fatigue(contrast=7.710), failure_encoded(contrast=1.636). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fuel_total_at_inject",
+        "fatigue"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.887,
+          3.54
+        ],
+        "altitude_range_ft": [
+          4453.525,
+          12584.625
+        ],
+        "time_since_inject_s": {
+          "p25": 215.0,
+          "p75": 677.0
+        },
+        "initial_conditions": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.06,
+              8.165
+            ],
+            "rec_range": [
+              18.695,
+              46.26
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.918,
+              1.0
+            ],
+            "rec_range": [
+              0.351,
+              0.835
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              15.0,
+              15.0
+            ],
+            "rec_range": [
+              15.0,
+              15.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.795,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "attitude_indicator_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>5.06",
+          "crash_probability": 0.795,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "attitude_indicator_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.636,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [4454\u201312585 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.9\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.35\u20130.83] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.80 >= HIGH alt crash_p=0.64 (less altitude \u2192 compressed recovery margin)"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 259,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "alternator_cascade_induced",
+      "primary_failure": "alternator",
+      "classification": "INDUCED",
+      "physics_score": 99,
+      "ntsb_score": 87,
+      "combined_confidence": 86.1,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "POH \u00a74.2",
+        "FAA AC 43.13-1B",
+        "POH \u00a77.1",
+        "FAA AC 23.1309-1A",
+        "Continental O-470 Manual",
+        "POH \u00a77.3"
+      ],
+      "ntsb_matching_accidents": [
+        "20140522X53227",
+        "20080425X00554",
+        "20090124X94322"
+      ],
+      "match_quality": {
+        "20140522X53227": 87,
+        "20080425X00554": 79,
+        "20090124X94322": 79
+      },
+      "interpretation": "DURING CASCADE: For 'alternator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-2.07\u00b0, altitude=5273.1\u201312064.1 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'alternator' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.508), v_at_inject(contrast=3.571), failure_encoded(contrast=3.101). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R001, R003, R004, R005, R007, R009, R010, R012, R013 (POH \u00a74.2, FAA AC 43.13-1B, POH \u00a77.1, FAA AC 23.1309-1A, Continental O-470 Manual, POH \u00a77.3). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 4-variable interaction (v \u00d7 rpm \u00d7 alt \u00d7 ff) with pilot state (fatigue + v_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "v",
+        "rpm",
+        "alt",
+        "ff"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "v_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          11.13,
+          11.16
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -2.41,
+          -2.07
+        ],
+        "altitude_range_ft": [
+          5273.1,
+          12064.1
+        ],
+        "time_since_inject_s": {
+          "p25": 1321.0,
+          "p75": 1818.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.915,
+              1.0
+            ],
+            "rec_range": [
+              0.294,
+              0.67
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "v_at_inject": {
+            "cat_range": [
+              11.49,
+              11.49
+            ],
+            "rec_range": [
+              11.85,
+              11.85
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              3.0,
+              3.0
+            ],
+            "rec_range": [
+              3.0,
+              3.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.397,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "alternator_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(v \u00d7 rpm \u00d7 alt \u00d7 ff) \u2297 initial(fatigue + v_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.318,
+          "physical_basis": "More time available but ['v', 'rpm', 'alt', 'ff'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 1,
+      "induced_relationship": "cascade(v \u00d7 rpm \u00d7 alt \u00d7 ff) \u2297 initial(fatigue + v_at_inject)",
+      "l1_related_rules": [
+        "R001",
+        "R003",
+        "R004",
+        "R005",
+        "R007",
+        "R009",
+        "R010",
+        "R012",
+        "R013"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R001', 'R003', 'R004', 'R005', 'R007', 'R009', 'R010', 'R012', 'R013']",
+        "Altitude kill zone [5273\u201312064 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [11.13\u201311.16 V] is in R003 degradation band (11.5 V threshold) \u2014 consistent with pump efficiency loss",
+        "Pitch kill zone [-2.4\u00b0\u2013-2.1\u00b0] within flight envelope",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.29\u20130.67] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'v_at_inject']",
+        "L1 citations: ['POH \u00a74.2', 'FAA AC 43.13-1B', 'POH \u00a77.1', 'FAA AC 23.1309-1A', 'Continental O-470 Manual', 'POH \u00a77.3']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 182,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "voltage_regulator_cascade_induced",
+      "primary_failure": "voltage_regulator",
+      "classification": "INDUCED",
+      "physics_score": 99,
+      "ntsb_score": 87,
+      "combined_confidence": 86.1,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "POH \u00a74.2",
+        "FAA AC 43.13-1B",
+        "POH \u00a77.1",
+        "FAA AC 23.1309-1A",
+        "Continental O-470 Manual",
+        "POH \u00a77.3"
+      ],
+      "ntsb_matching_accidents": [
+        "20140522X53227",
+        "20160906X24205",
+        "20150820X11129"
+      ],
+      "match_quality": {
+        "20140522X53227": 87,
+        "20160906X24205": 87,
+        "20150820X11129": 79
+      },
+      "interpretation": "DURING CASCADE: For 'voltage_regulator' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.13\u201311.16 V, fuel_flow=11.0\u201311.0 GPH, pitch=-2.41\u00b0\u2013-1.99\u00b0, altitude=5192.0\u201313454.7 ft. voltage IQR=0.03V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'voltage_regulator' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.461), v_at_inject(contrast=3.565), failure_encoded(contrast=3.032). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R003, R004, R005, R007, R009, R010, R012, R013 (POH \u00a74.2, FAA AC 43.13-1B, POH \u00a77.1, FAA AC 23.1309-1A, Continental O-470 Manual, POH \u00a77.3). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 4-variable interaction (v \u00d7 rpm \u00d7 alt \u00d7 ff) with pilot state (fatigue + v_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "v",
+        "rpm",
+        "alt",
+        "ff"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "v_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          11.13,
+          11.16
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -2.41,
+          -1.99
+        ],
+        "altitude_range_ft": [
+          5192.0,
+          13454.7
+        ],
+        "time_since_inject_s": {
+          "p25": 1299.0,
+          "p75": 1703.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.917,
+              1.0
+            ],
+            "rec_range": [
+              0.302,
+              0.668
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "v_at_inject": {
+            "cat_range": [
+              11.49,
+              11.49
+            ],
+            "rec_range": [
+              12.0,
+              12.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              5.0,
+              5.0
+            ],
+            "rec_range": [
+              5.0,
+              5.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.336,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "voltage_regulator_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(v \u00d7 rpm \u00d7 alt \u00d7 ff) \u2297 initial(fatigue + v_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.269,
+          "physical_basis": "More time available but ['v', 'rpm', 'alt', 'ff'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 1,
+      "induced_relationship": "cascade(v \u00d7 rpm \u00d7 alt \u00d7 ff) \u2297 initial(fatigue + v_at_inject)",
+      "l1_related_rules": [
+        "R003",
+        "R004",
+        "R005",
+        "R007",
+        "R009",
+        "R010",
+        "R012",
+        "R013"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R005', 'R007', 'R009', 'R010', 'R012', 'R013']",
+        "Altitude kill zone [5192\u201313455 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [11.13\u201311.16 V] is in R003 degradation band (11.5 V threshold) \u2014 consistent with pump efficiency loss",
+        "Pitch kill zone [-2.4\u00b0\u2013-2.0\u00b0] within flight envelope",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.30\u20130.67] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'v_at_inject']",
+        "L1 citations: ['POH \u00a74.2', 'FAA AC 43.13-1B', 'POH \u00a77.1', 'FAA AC 23.1309-1A', 'Continental O-470 Manual', 'POH \u00a77.3']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 145,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "battery_cascade_induced",
+      "primary_failure": "battery",
+      "classification": "INDUCED",
+      "physics_score": 100,
+      "ntsb_score": 83,
+      "combined_confidence": 83.0,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [
+        "Service Manual D2006R4-13"
+      ],
+      "ntsb_matching_accidents": [
+        "20140522X53227",
+        "20110123X12244",
+        "20130627X54046"
+      ],
+      "match_quality": {
+        "20140522X53227": 83,
+        "20110123X12244": 82,
+        "20130627X54046": 82
+      },
+      "interpretation": "DURING CASCADE: For 'battery' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=0.0\u20130.0 V, fuel_flow=0.0\u20130.0 GPH, pitch=7.53\u00b0\u201315.438\u00b0, altitude=4449.95\u201311873.225 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'battery' failures: the most discriminating pre-existing conditions are fatigue(contrast=10.533), alt_at_inject(contrast=4.255), vs_at_inject(contrast=2.826). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.01. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R002 (Service Manual D2006R4-13). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 4-variable interaction (alt \u00d7 rpm \u00d7 vs \u00d7 pitch) with pilot state (fatigue + alt_at_inject + vs_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "alt",
+        "rpm",
+        "vs",
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "alt_at_inject",
+        "vs_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          0.0,
+          0.0
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          7.53,
+          15.438
+        ],
+        "altitude_range_ft": [
+          4449.95,
+          11873.225
+        ],
+        "time_since_inject_s": {
+          "p25": 221.0,
+          "p75": 697.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.578,
+              0.938
+            ],
+            "rec_range": [
+              0.228,
+              0.432
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "alt_at_inject": {
+            "cat_range": [
+              3405.325,
+              11026.899
+            ],
+            "rec_range": [
+              8639.0,
+              14362.2
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -29.8,
+              -26.73
+            ],
+            "rec_range": [
+              -27.68,
+              -25.59
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 1.0,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "battery_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.58",
+          "crash_probability": 1.0,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['alt', 'rpm'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "battery_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.8,
+          "physical_basis": "More time available but ['alt', 'rpm', 'vs', 'pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(alt \u00d7 rpm \u00d7 vs \u00d7 pitch) \u2297 initial(fatigue + alt_at_inject + vs_at_inject)",
+      "l1_related_rules": [
+        "R002"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R002']",
+        "Altitude kill zone [4450\u201311873 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage not a primary cascade variable for this component (expected)",
+        "Pitch kill zone [7.5\u00b0\u201315.4\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.58\u20130.94] > recoverable [0.23\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['Service Manual D2006R4-13']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 201,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "fuel_tank_left_cascade_novel",
+      "primary_failure": "fuel_tank_left",
+      "classification": "NOVEL",
+      "physics_score": 89,
+      "ntsb_score": 93,
+      "combined_confidence": 82.8,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20080714X01030",
+        "20091022X01008",
+        "20080505X00597"
+      ],
+      "match_quality": {
+        "20080714X01030": 93,
+        "20091022X01008": 89,
+        "20080505X00597": 85
+      },
+      "interpretation": "DURING CASCADE: For 'fuel_tank_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.61\u00b0\u20133.54\u00b0, altitude=4372.5\u201312388.5 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=159 trajectories. | AT INJECTION (swiss cheese): For 'fuel_tank_left' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.645), fuel_total_at_inject(contrast=7.287), pump_eff_at_inject(contrast=0.869). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "fuel_total_at_inject",
+        "pump_eff_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.61,
+          3.54
+        ],
+        "altitude_range_ft": [
+          4372.5,
+          12388.5
+        ],
+        "time_since_inject_s": {
+          "p25": 197.0,
+          "p75": 681.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.912,
+              1.0
+            ],
+            "rec_range": [
+              0.357,
+              0.84
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.5,
+              7.8
+            ],
+            "rec_range": [
+              18.36,
+              45.68
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.747,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "fuel_tank_left_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.91",
+          "crash_probability": 0.747,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "fuel_tank_left_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.598,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [4372\u201312388 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.6\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.75 >= HIGH alt crash_p=0.60 (less altitude \u2192 compressed recovery margin)"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "fuel_tank_right_cascade_novel",
+      "primary_failure": "fuel_tank_right",
+      "classification": "NOVEL",
+      "physics_score": 89,
+      "ntsb_score": 93,
+      "combined_confidence": 82.8,
+      "validation_status": "VALIDATED",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20080714X01030",
+        "20091022X01008",
+        "20080505X00597"
+      ],
+      "match_quality": {
+        "20080714X01030": 93,
+        "20091022X01008": 89,
+        "20080505X00597": 85
+      },
+      "interpretation": "DURING CASCADE: For 'fuel_tank_right' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.68\u00b0\u20133.5\u00b0, altitude=4152.8\u201311824.2 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=179 trajectories. | AT INJECTION (swiss cheese): For 'fuel_tank_right' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.537), fuel_total_at_inject(contrast=7.446), pump_eff_at_inject(contrast=0.860). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "fuel_total_at_inject",
+        "pump_eff_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.68,
+          3.5
+        ],
+        "altitude_range_ft": [
+          4152.8,
+          11824.2
+        ],
+        "time_since_inject_s": {
+          "p25": 269.0,
+          "p75": 708.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.91,
+              1.0
+            ],
+            "rec_range": [
+              0.352,
+              0.851
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.12,
+              7.8
+            ],
+            "rec_range": [
+              18.61,
+              46.22
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.791,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "fuel_tank_right_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.91",
+          "crash_probability": 0.791,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "fuel_tank_right_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.633,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [4153\u201311824 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.7\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.35\u20130.85] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.79 >= HIGH alt crash_p=0.63 (less altitude \u2192 compressed recovery margin)"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "magnetos_cascade_novel",
+      "primary_failure": "magnetos",
+      "classification": "NOVEL",
+      "physics_score": 86,
+      "ntsb_score": 93,
+      "combined_confidence": 80.0,
+      "validation_status": "LIKELY_REAL",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20120111X05220",
+        "20111111X12732",
+        "20101025X62111"
+      ],
+      "match_quality": {
+        "20120111X05220": 93,
+        "20111111X12732": 89,
+        "20101025X62111": 87
+      },
+      "interpretation": "DURING CASCADE: For 'magnetos' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.51\u00b0\u20133.5\u00b0, altitude=5198.1\u201312939.9 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=194 trajectories. | AT INJECTION (swiss cheese): For 'magnetos' failures: the most discriminating pre-existing conditions are fatigue(contrast=7.652), fuel_total_at_inject(contrast=7.247), pump_eff_at_inject(contrast=0.853). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "fuel_total_at_inject",
+        "pump_eff_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.51,
+          3.5
+        ],
+        "altitude_range_ft": [
+          5198.1,
+          12939.9
+        ],
+        "time_since_inject_s": {
+          "p25": 194.0,
+          "p75": 691.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.907,
+              1.0
+            ],
+            "rec_range": [
+              0.365,
+              0.834
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.05,
+              8.085
+            ],
+            "rec_range": [
+              18.7,
+              46.02
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "pump_eff_at_inject": {
+            "cat_range": [
+              1.0,
+              1.0
+            ],
+            "rec_range": [
+              1.0,
+              1.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.758,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "magnetos_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.606,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 1,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fatigue + fuel_total_at_inject + pump_eff_at_inject)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [5198\u201312940 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.5\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.36\u20130.83] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "engine_left_cascade_induced",
+      "primary_failure": "engine_left",
+      "classification": "INDUCED",
+      "physics_score": 100,
+      "ntsb_score": 79,
+      "combined_confidence": 79.0,
+      "validation_status": "LIKELY_REAL",
+      "passed_threshold": true,
+      "citations": [
+        "POH \u00a77.1",
+        "FAA AC 23.1309-1A",
+        "FAA AC 43.13-1B"
+      ],
+      "ntsb_matching_accidents": [
+        "20080606X00807",
+        "20081012X85752",
+        "20080213X00184"
+      ],
+      "match_quality": {
+        "20080606X00807": 79,
+        "20081012X85752": 79,
+        "20080213X00184": 72
+      },
+      "interpretation": "DURING CASCADE: For 'engine_left' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=11.86\u201311.92 V, fuel_flow=0.0\u20130.0 GPH, pitch=-2.88\u00b0\u20130.81\u00b0, altitude=2060.975\u201312577.025 ft. voltage IQR=0.06V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'engine_left' failures: the most discriminating pre-existing conditions are fatigue(contrast=11.647), failure_encoded(contrast=1.998), vs_at_inject(contrast=1.787). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R003, R004, R010, R013 (POH \u00a77.1, FAA AC 23.1309-1A, FAA AC 43.13-1B). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 4-variable interaction (pitch \u00d7 alt \u00d7 vs \u00d7 v) with pilot state (fatigue + vs_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "pitch",
+        "alt",
+        "vs",
+        "v"
+      ],
+      "swiss_cheese_variables": [
+        "fatigue",
+        "vs_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          11.86,
+          11.92
+        ],
+        "fuel_flow_range_gph": [
+          0.0,
+          0.0
+        ],
+        "pitch_range_deg": [
+          -2.88,
+          0.81
+        ],
+        "altitude_range_ft": [
+          2060.975,
+          12577.025
+        ],
+        "time_since_inject_s": {
+          "p25": 208.0,
+          "p75": 658.0
+        },
+        "initial_conditions": {
+          "fatigue": {
+            "cat_range": [
+              0.89,
+              1.0
+            ],
+            "rec_range": [
+              0.298,
+              0.662
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              0.0,
+              0.0
+            ],
+            "rec_range": [
+              0.0,
+              0.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "vs_at_inject": {
+            "cat_range": [
+              -30.05,
+              -26.31
+            ],
+            "rec_range": [
+              -29.137,
+              -26.14
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.233,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "engine_left_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch \u00d7 alt \u00d7 vs \u00d7 v) \u2297 initial(fatigue + vs_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>0.89",
+          "crash_probability": 0.233,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch', 'alt'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "engine_left_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch \u00d7 alt \u00d7 vs \u00d7 v) \u2297 initial(fatigue + vs_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.186,
+          "physical_basis": "More time available but ['pitch', 'alt', 'vs', 'v'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch \u00d7 alt \u00d7 vs \u00d7 v) \u2297 initial(fatigue + vs_at_inject)",
+      "l1_related_rules": [
+        "R003",
+        "R004",
+        "R010",
+        "R013"
+      ],
+      "physics_evidence": [
+        "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R010', 'R013']",
+        "Altitude kill zone [2061\u201312577 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [11.86\u201311.92 V] within operating envelope",
+        "Pitch kill zone [-2.9\u00b0\u20130.8\u00b0] within flight envelope",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.89\u20131.00] > recoverable [0.30\u20130.66] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'vs_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.23 >= HIGH alt crash_p=0.19 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['POH \u00a77.1', 'FAA AC 23.1309-1A', 'FAA AC 43.13-1B']"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "flaps_cascade_novel",
+      "primary_failure": "flaps",
+      "classification": "NOVEL",
+      "physics_score": 89,
+      "ntsb_score": 82,
+      "combined_confidence": 73.0,
+      "validation_status": "LIKELY_REAL",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20100809X15745",
+        "20110118X70638",
+        "20080714X01030"
+      ],
+      "match_quality": {
+        "20100809X15745": 82,
+        "20110118X70638": 82,
+        "20080714X01030": 78
+      },
+      "interpretation": "DURING CASCADE: For 'flaps' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.92\u00b0\u20133.58\u00b0, altitude=3783.8\u201312474.8 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=186 trajectories. | AT INJECTION (swiss cheese): For 'flaps' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=8.072), fatigue(contrast=7.709), failure_encoded(contrast=1.630). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fuel_total_at_inject",
+        "fatigue"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.92,
+          3.58
+        ],
+        "altitude_range_ft": [
+          3783.8,
+          12474.8
+        ],
+        "time_since_inject_s": {
+          "p25": 196.0,
+          "p75": 698.0
+        },
+        "initial_conditions": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.1,
+              7.96
+            ],
+            "rec_range": [
+              18.94,
+              46.24
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.912,
+              1.0
+            ],
+            "rec_range": [
+              0.349,
+              0.836
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              16.0,
+              16.0
+            ],
+            "rec_range": [
+              16.0,
+              16.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.781,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "flaps_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>5.10",
+          "crash_probability": 0.781,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "flaps_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.625,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [3784\u201312475 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.9\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.35\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.78 >= HIGH alt crash_p=0.62 (less altitude \u2192 compressed recovery margin)"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "trim_system_cascade_novel",
+      "primary_failure": "trim_system",
+      "classification": "NOVEL",
+      "physics_score": 89,
+      "ntsb_score": 82,
+      "combined_confidence": 73.0,
+      "validation_status": "LIKELY_REAL",
+      "passed_threshold": true,
+      "citations": [],
+      "ntsb_matching_accidents": [
+        "20100809X15745",
+        "20110118X70638",
+        "20130213X43319"
+      ],
+      "match_quality": {
+        "20100809X15745": 82,
+        "20110118X70638": 82,
+        "20130213X43319": 82
+      },
+      "interpretation": "DURING CASCADE: For 'trim_system' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=1.78\u00b0\u20133.58\u00b0, altitude=4418.0\u201312351.0 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=177 trajectories. | AT INJECTION (swiss cheese): For 'trim_system' failures: the most discriminating pre-existing conditions are fuel_total_at_inject(contrast=8.037), fatigue(contrast=7.742), failure_encoded(contrast=1.606). Catastrophic trajectories show mean P(crash)=0.99 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "fuel_total_at_inject",
+        "fatigue"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          1.78,
+          3.58
+        ],
+        "altitude_range_ft": [
+          4418.0,
+          12351.0
+        ],
+        "time_since_inject_s": {
+          "p25": 282.0,
+          "p75": 656.0
+        },
+        "initial_conditions": {
+          "fuel_total_at_inject": {
+            "cat_range": [
+              5.06,
+              7.84
+            ],
+            "rec_range": [
+              18.48,
+              45.9
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "fatigue": {
+            "cat_range": [
+              0.928,
+              1.0
+            ],
+            "rec_range": [
+              0.36,
+              0.844
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              17.0,
+              17.0
+            ],
+            "rec_range": [
+              17.0,
+              17.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.782,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "trim_system_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>5.06",
+          "crash_probability": 0.782,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "trim_system_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.626,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(fuel_total_at_inject + fatigue)",
+      "l1_related_rules": [],
+      "physics_evidence": [
+        "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+        "Altitude kill zone [4418\u201312351 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [1.8\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+        "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.93\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.78 >= HIGH alt crash_p=0.63 (less altitude \u2192 compressed recovery margin)"
+      ],
+      "physics_deductions": [],
+      "classification_fix": null,
+      "n_accidents_searched": 300,
+      "source": "cascade_transformer + snapshot_xgboost"
+    },
+    {
+      "failure_mode": "vacuum_pump_cascade_confirmed",
+      "primary_failure": "vacuum_pump",
+      "classification": "CONFIRMED",
+      "physics_score": 73,
+      "ntsb_score": 73,
+      "combined_confidence": 53.3,
+      "validation_status": "POSSIBLE",
+      "passed_threshold": false,
+      "citations": [
+        "POH \u00a77.3"
+      ],
+      "ntsb_matching_accidents": [
+        "20101028X12506",
+        "20110118X70638",
+        "20110704X21533"
+      ],
+      "match_quality": {
+        "20101028X12506": 73,
+        "20110118X70638": 73,
+        "20110704X21533": 73
+      },
+      "interpretation": "DURING CASCADE: For 'vacuum_pump' failures with cascade duration >= 5s: during the cascade window, attention focuses on voltage=14.0\u201314.0 V, fuel_flow=11.0\u201311.0 GPH, pitch=-1.07\u00b0\u20133.78\u00b0, altitude=4347.2\u201313682.4 ft. voltage IQR=0.00V \u2014 minimal electrical change in this cascade type. n=200 trajectories. | AT INJECTION (swiss cheese): For 'vacuum_pump' failures: the most discriminating pre-existing conditions are weather_encoded(contrast=6.573), failure_encoded(contrast=3.679), roll_at_inject(contrast=2.736). Catastrophic trajectories show mean P(crash)=1.00 vs recoverable P(crash)=0.00. This is the swiss cheese hole alignment pattern \u2014 these conditions at failure injection determine outcome more than any single factor alone. | GROUND TRUTH ANCHOR: Related to L1 rules R007 (POH \u00a77.3). This relationship EXTENDS those rules: L1 encodes component-level cascade logic, but does NOT capture the 1-variable interaction (pitch) with pilot state (weather_encoded + roll_at_inject) that determines outcome.",
+      "cascade_variables": [
+        "pitch"
+      ],
+      "swiss_cheese_variables": [
+        "weather_encoded",
+        "roll_at_inject"
+      ],
+      "kill_zone": {
+        "voltage_range_V": [
+          14.0,
+          14.0
+        ],
+        "fuel_flow_range_gph": [
+          11.0,
+          11.0
+        ],
+        "pitch_range_deg": [
+          -1.07,
+          3.78
+        ],
+        "altitude_range_ft": [
+          4347.2,
+          13682.4
+        ],
+        "time_since_inject_s": {
+          "p25": 242.0,
+          "p75": 697.0
+        },
+        "initial_conditions": {
+          "weather_encoded": {
+            "cat_range": [
+              1.0,
+              2.0
+            ],
+            "rec_range": [
+              0.0,
+              3.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "failure_encoded": {
+            "cat_range": [
+              13.0,
+              13.0
+            ],
+            "rec_range": [
+              13.0,
+              13.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          },
+          "roll_at_inject": {
+            "cat_range": [
+              0.0,
+              0.01
+            ],
+            "rec_range": [
+              0.0,
+              0.0
+            ],
+            "interpretation": "higher_in_catastrophic"
+          }
+        }
+      },
+      "crash_probability": 0.252,
+      "sub_rules_by_altitude": [
+        {
+          "sub_rule_id": "vacuum_pump_low_alt",
+          "altitude_band": "LOW (<5000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(weather_encoded + roll_at_inject) [LOW ALTITUDE variant]",
+          "critical_condition": "Failure at alt<5000ft with fatigue>1.00",
+          "crash_probability": 0.252,
+          "physical_basis": "Recovery margin compressed at low altitude \u2014 cascade variables ['pitch'] reach critical thresholds before pilot can respond"
+        },
+        {
+          "sub_rule_id": "vacuum_pump_high_alt",
+          "altitude_band": "HIGH (>8000ft)",
+          "induced_relationship": "cascade(pitch) \u2297 initial(weather_encoded + roll_at_inject) [HIGH ALTITUDE variant]",
+          "critical_condition": "Failure at alt>8000ft \u2014 extended cascade but R014 risk (vacuum+IMC)",
+          "crash_probability": 0.202,
+          "physical_basis": "More time available but ['pitch'] interact with spatial disorientation risk in IMC (R014)"
+        }
+      ],
+      "n_sub_rules": 2,
+      "induced_relationship": "cascade(pitch) \u2297 initial(weather_encoded + roll_at_inject)",
+      "l1_related_rules": [
+        "R007"
+      ],
+      "physics_evidence": [
+        "NOVEL classification: no L1 anchor; relies on empirical simulation pattern",
+        "Altitude kill zone [4347\u201313682 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+        "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+        "Pitch kill zone [-1.1\u00b0\u20133.8\u00b0] within flight envelope",
+        "Swiss cheese pattern captures 2 pre-existing conditions: ['weather_encoded', 'roll_at_inject']",
+        "Sub-rule altitude ordering correct: LOW alt crash_p=0.25 >= HIGH alt crash_p=0.20 (less altitude \u2192 compressed recovery margin)",
+        "L1 citations: ['POH \u00a77.3']"
+      ],
+      "physics_deductions": [
+        "Fatigue direction unexpected: cat=[0.00\u20131.00] rec=[0.00\u20131.00]"
+      ],
+      "classification_fix": null,
+      "n_accidents_searched": 252,
+      "source": "cascade_transformer + snapshot_xgboost"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+# FailureScope Layer 5 — Integration (L3+L4 inference wired into app.py)

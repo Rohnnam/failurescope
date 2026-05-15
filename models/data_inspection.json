@@ -1,0 +1,261 @@
+{
+  "n_inspected": 50000,
+  "outcome_counts": {
+    "recoverable": 30588,
+    "catastrophic": 19412
+  },
+  "failure_type_counts": {
+    "alternator": 35714,
+    "battery": 14286
+  },
+  "cascade_duration": {
+    "catastrophic": {
+      "n": 19412,
+      "mean": 979.6,
+      "median": 36.5,
+      "max": 2036.1,
+      "pct_over_30s": 81.0,
+      "pct_over_60s": 48.6,
+      "pct_over_200s": 48.6,
+      "pct_over_300s": 48.6
+    },
+    "recoverable": {
+      "n": 30588,
+      "mean": 2314.7
+    }
+  },
+  "state_change_during_cascade": {
+    "v": {
+      "mean_change": 0.605,
+      "pct_nonzero": 48.6
+    },
+    "ff": {
+      "mean_change": 5.346,
+      "pct_nonzero": 48.6
+    },
+    "pump_eff": {
+      "mean_change": 0.468,
+      "pct_nonzero": 46.8
+    },
+    "rpm": {
+      "mean_change": 1809.49,
+      "pct_nonzero": 93.2
+    },
+    "alt": {
+      "mean_change": 1828.026,
+      "pct_nonzero": 93.2
+    }
+  },
+  "inject_time_distribution": {
+    "pct_at_t0": 0.1,
+    "pct_before_100s": 11.2,
+    "pct_after_300s": 66.6,
+    "median_inject_t": 451.3
+  },
+  "failure_chain_lengths": {
+    "0": 0,
+    "1": 50000,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+  },
+  "swiss_cheese_candidates": [
+    {
+      "scenario": "alternator_alt10000",
+      "catastrophic": 1159,
+      "recoverable": 3306,
+      "ratio": 0.35
+    },
+    {
+      "scenario": "alternator_alt4000",
+      "catastrophic": 1178,
+      "recoverable": 3287,
+      "ratio": 0.36
+    },
+    {
+      "scenario": "alternator_alt12000",
+      "catastrophic": 1166,
+      "recoverable": 3298,
+      "ratio": 0.35
+    },
+    {
+      "scenario": "alternator_alt2000",
+      "catastrophic": 1204,
+      "recoverable": 3260,
+      "ratio": 0.37
+    },
+    {
+      "scenario": "alternator_alt14000",
+      "catastrophic": 1170,
+      "recoverable": 3294,
+      "ratio": 0.36
+    },
+    {
+      "scenario": "alternator_alt6000",
+      "catastrophic": 1178,
+      "recoverable": 3286,
+      "ratio": 0.36
+    },
+    {
+      "scenario": "alternator_alt8000",
+      "catastrophic": 1219,
+      "recoverable": 3245,
+      "ratio": 0.38
+    },
+    {
+      "scenario": "alternator_alt0",
+      "catastrophic": 881,
+      "recoverable": 2467,
+      "ratio": 0.36
+    },
+    {
+      "scenario": "battery_alt8000",
+      "catastrophic": 1155,
+      "recoverable": 673,
+      "ratio": 1.72
+    },
+    {
+      "scenario": "battery_alt14000",
+      "catastrophic": 838,
+      "recoverable": 968,
+      "ratio": 0.87
+    },
+    {
+      "scenario": "battery_alt4000",
+      "catastrophic": 1556,
+      "recoverable": 234,
+      "ratio": 6.65
+    },
+    {
+      "scenario": "battery_alt6000",
+      "catastrophic": 1194,
+      "recoverable": 593,
+      "ratio": 2.01
+    },
+    {
+      "scenario": "battery_alt12000",
+      "catastrophic": 943,
+      "recoverable": 836,
+      "ratio": 1.13
+    },
+    {
+      "scenario": "battery_alt10000",
+      "catastrophic": 967,
+      "recoverable": 743,
+      "ratio": 1.3
+    },
+    {
+      "scenario": "alternator_alt16000",
+      "catastrophic": 279,
+      "recoverable": 837,
+      "ratio": 0.33
+    },
+    {
+      "scenario": "battery_alt16000",
+      "catastrophic": 201,
+      "recoverable": 261,
+      "ratio": 0.77
+    }
+  ],
+  "slow_cascade_examples": [
+    {
+      "id": "8581d2754e6d",
+      "comp": "alternator",
+      "inject_t": 300.0,
+      "ttc_s": 2305.4,
+      "cascade_s": 2005.4,
+      "chain": [
+        {
+          "component": "alternator",
+          "time_s": 300.0,
+          "severity": "catastrophic"
+        }
+      ],
+      "alt_init": 10788.2,
+      "state_at_inject": {
+        "v": 11.49,
+        "ff": 11.0,
+        "pump_eff": 1.0,
+        "rpm": 2400.0
+      },
+      "state_at_crash": {
+        "v": 10.23,
+        "ff": 0.0,
+        "pump_eff": 0.0,
+        "rpm": 0.0
+      }
+    },
+    {
+      "id": "9f0373a2a860",
+      "comp": "alternator",
+      "inject_t": 609.8,
+      "ttc_s": 2619.7,
+      "cascade_s": 2009.8999999999999,
+      "chain": [
+        {
+          "component": "alternator",
+          "time_s": 609.8,
+          "severity": "catastrophic"
+        }
+      ],
+      "alt_init": 15502.3,
+      "state_at_inject": {
+        "v": 11.49,
+        "ff": 11.0,
+        "pump_eff": 1.0,
+        "rpm": 2400.0
+      },
+      "state_at_crash": {
+        "v": 10.23,
+        "ff": 0.0,
+        "pump_eff": 0.0,
+        "rpm": 0.0
+      }
+    },
+    {
+      "id": "ba2652725e4a",
+      "comp": "alternator",
+      "inject_t": 457.3,
+      "ttc_s": 2047.8,
+      "cascade_s": 1590.5,
+      "chain": [
+        {
+          "component": "alternator",
+          "time_s": 457.3,
+          "severity": "catastrophic"
+        }
+      ],
+      "alt_init": 1460.8,
+      "state_at_inject": {
+        "v": 11.49,
+        "ff": 11.0,
+        "pump_eff": 1.0,
+        "rpm": 2400.0
+      },
+      "state_at_crash": {
+        "v": 10.55,
+        "ff": 0.0,
+        "pump_eff": 1.0,
+        "rpm": 0.0
+      }
+    }
+  ],
+  "go_nogo": {
+    "snapshot_model": {
+      "go": true,
+      "reason": "All 19,412 cat + 30,588 rec trajectories usable"
+    },
+    "cascade_transformer": {
+      "go": true,
+      "n_usable": 94340,
+      "reason": "~94,340 trajectories with cascade>60s projected in full dataset. \u2713 Sufficient for Transformer training."
+    },
+    "state_variables_change": {
+      "go": true,
+      "voltage_changes_in_pct": 48.6,
+      "pump_eff_changes_in_pct": 46.8
+    }
+  }
+}

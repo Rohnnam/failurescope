@@ -1,0 +1,275 @@
+{
+  "alternator": {
+    "score": 99,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R001', 'R003', 'R004', 'R005', 'R007', 'R009', 'R010', 'R012', 'R013']",
+      "Altitude kill zone [5273\u201312064 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [11.13\u201311.16 V] is in R003 degradation band (11.5 V threshold) \u2014 consistent with pump efficiency loss",
+      "Pitch kill zone [-2.4\u00b0\u2013-2.1\u00b0] within flight envelope",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.29\u20130.67] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'v_at_inject']",
+      "L1 citations: ['POH \u00a74.2', 'FAA AC 43.13-1B', 'POH \u00a77.1', 'FAA AC 23.1309-1A', 'Continental O-470 Manual', 'POH \u00a77.3']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "POH \u00a74.2",
+      "FAA AC 43.13-1B",
+      "POH \u00a77.1",
+      "FAA AC 23.1309-1A",
+      "Continental O-470 Manual",
+      "POH \u00a77.3"
+    ],
+    "classification_fix": null
+  },
+  "battery": {
+    "score": 100,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R002']",
+      "Altitude kill zone [4450\u201311873 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage not a primary cascade variable for this component (expected)",
+      "Pitch kill zone [7.5\u00b0\u201315.4\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.58\u20130.94] > recoverable [0.23\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['Service Manual D2006R4-13']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "Service Manual D2006R4-13"
+    ],
+    "classification_fix": null
+  },
+  "carburetor": {
+    "score": 100,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R011']",
+      "Altitude kill zone [4396\u201312675 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [2.5\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.85 >= HIGH alt crash_p=0.68 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['FAA AC 61-23C']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "FAA AC 61-23C"
+    ],
+    "classification_fix": null
+  },
+  "engine_left": {
+    "score": 100,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R010', 'R013']",
+      "Altitude kill zone [2061\u201312577 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [11.86\u201311.92 V] within operating envelope",
+      "Pitch kill zone [-2.9\u00b0\u20130.8\u00b0] within flight envelope",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.89\u20131.00] > recoverable [0.30\u20130.66] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'vs_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.23 >= HIGH alt crash_p=0.19 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['POH \u00a77.1', 'FAA AC 23.1309-1A', 'FAA AC 43.13-1B']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "POH \u00a77.1",
+      "FAA AC 23.1309-1A",
+      "FAA AC 43.13-1B"
+    ],
+    "classification_fix": null
+  },
+  "fuel_selector": {
+    "score": 100,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R012']",
+      "Altitude kill zone [3237\u201311593 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [7.8\u00b0\u201319.1\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.59\u20130.94] > recoverable [0.22\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['POH \u00a74.2']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "POH \u00a74.2"
+    ],
+    "classification_fix": null
+  },
+  "voltage_regulator": {
+    "score": 99,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R005', 'R007', 'R009', 'R010', 'R012', 'R013']",
+      "Altitude kill zone [5192\u201313455 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [11.13\u201311.16 V] is in R003 degradation band (11.5 V threshold) \u2014 consistent with pump efficiency loss",
+      "Pitch kill zone [-2.4\u00b0\u2013-2.0\u00b0] within flight envelope",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.30\u20130.67] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fatigue', 'v_at_inject']",
+      "L1 citations: ['POH \u00a74.2', 'FAA AC 43.13-1B', 'POH \u00a77.1', 'FAA AC 23.1309-1A', 'Continental O-470 Manual', 'POH \u00a77.3']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "POH \u00a74.2",
+      "FAA AC 43.13-1B",
+      "POH \u00a77.1",
+      "FAA AC 23.1309-1A",
+      "Continental O-470 Manual",
+      "POH \u00a77.3"
+    ],
+    "classification_fix": null
+  },
+  "attitude_indicator": {
+    "score": 89,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [4454\u201312585 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.9\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.92\u20131.00] > recoverable [0.35\u20130.83] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.80 >= HIGH alt crash_p=0.64 (less altitude \u2192 compressed recovery margin)"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "flaps": {
+    "score": 89,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [3784\u201312475 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.9\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.35\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.78 >= HIGH alt crash_p=0.62 (less altitude \u2192 compressed recovery margin)"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "fuel_pump": {
+    "score": 100,
+    "passed": true,
+    "evidence": [
+      "INDUCED classification: grounded in L1 rules ['R003', 'R004', 'R005']",
+      "Altitude kill zone [2608\u201311555 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [7.9\u00b0\u201318.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.59\u20130.94] > recoverable [0.22\u20130.43] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'alt_at_inject', 'vs_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=1.00 >= HIGH alt crash_p=0.80 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['FAA AC 43.13-1B', 'POH \u00a77.1']"
+    ],
+    "deductions": [],
+    "classification": "INDUCED",
+    "l1_citations": [
+      "FAA AC 43.13-1B",
+      "POH \u00a77.1"
+    ],
+    "classification_fix": "String mismatch: fuel_pump relates to pump_fail/pump_degrade triggers"
+  },
+  "fuel_tank_left": {
+    "score": 89,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [4372\u201312388 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.6\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.75 >= HIGH alt crash_p=0.60 (less altitude \u2192 compressed recovery margin)"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "fuel_tank_right": {
+    "score": 89,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [4153\u201311824 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.7\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.35\u20130.85] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.79 >= HIGH alt crash_p=0.63 (less altitude \u2192 compressed recovery margin)"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "magnetos": {
+    "score": 86,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [5198\u201312940 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.5\u00b0\u20133.5\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.91\u20131.00] > recoverable [0.36\u20130.83] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 3 pre-existing conditions: ['fatigue', 'fuel_total_at_inject', 'pump_eff_at_inject']"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "trim_system": {
+    "score": 89,
+    "passed": true,
+    "evidence": [
+      "NOVEL classification: no direct L1 anchor, but kill zone aligns with physically plausible exhausted-pilot + low-fuel scenario",
+      "Altitude kill zone [4418\u201312351 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [1.8\u00b0\u20133.6\u00b0] is positive (nose-up), consistent with recovery maneuver attempt (pilot pitching up)",
+      "Fatigue swiss cheese: catastrophic P25\u2013P75 = [0.93\u20131.00] > recoverable [0.36\u20130.84] \u2014 directionally correct (higher pilot fatigue \u2192 worse outcomes)",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['fuel_total_at_inject', 'fatigue']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.78 >= HIGH alt crash_p=0.63 (less altitude \u2192 compressed recovery margin)"
+    ],
+    "deductions": [],
+    "classification": "NOVEL",
+    "l1_citations": [],
+    "classification_fix": null
+  },
+  "vacuum_pump": {
+    "score": 73,
+    "passed": false,
+    "evidence": [
+      "NOVEL classification: no L1 anchor; relies on empirical simulation pattern",
+      "Altitude kill zone [4347\u201313682 ft] within service ceiling (POH \u00a75.1 Service Ceiling)",
+      "Voltage kill zone [14.00\u201314.00 V] within operating envelope",
+      "Pitch kill zone [-1.1\u00b0\u20133.8\u00b0] within flight envelope",
+      "Swiss cheese pattern captures 2 pre-existing conditions: ['weather_encoded', 'roll_at_inject']",
+      "Sub-rule altitude ordering correct: LOW alt crash_p=0.25 >= HIGH alt crash_p=0.20 (less altitude \u2192 compressed recovery margin)",
+      "L1 citations: ['POH \u00a77.3']"
+    ],
+    "deductions": [
+      "Fatigue direction unexpected: cat=[0.00\u20131.00] rec=[0.00\u20131.00]"
+    ],
+    "classification": "CONFIRMED",
+    "l1_citations": [
+      "POH \u00a77.3"
+    ],
+    "classification_fix": null
+  }
+}

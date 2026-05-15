@@ -1,0 +1,716 @@
+{
+  "alternator": {
+    "ntsb_score": 87,
+    "status": "VALIDATED",
+    "n_accidents_searched": 182,
+    "n_matches": 149,
+    "top_matches": [
+      {
+        "accident_id": "20140522X53227",
+        "event_date": "05/21/14 00:00:00",
+        "total_score": 87,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn May 21, 2014, at 0810 eastern daylight time, a Cessna 182S, N182PJ, was substantially damaged during a runway overrun at Cecil County Airport (58M), Elkton, Maryland. The airline t\u2026",
+        "aircraft_model": "182"
+      },
+      {
+        "accident_id": "20080425X00554",
+        "event_date": "04/19/08 00:00:00",
+        "total_score": 79,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn April 19, 2008, about 1010 Pacific daylight time, a Cessna 510 Citation Mustang, N54PV, sustained substantial damage following the pilot's intentional ground loop maneuver during\u2026",
+        "aircraft_model": "510"
+      },
+      {
+        "accident_id": "20090124X94322",
+        "event_date": "01/24/09 00:00:00",
+        "total_score": 79,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 12,
+          "outcome": 7
+        },
+        "text_snippet": "On January 24, 2009, about 1042 Pacific standard time, a Cessna 172S, N562AD, collided with the ground following a loss of engine power during a go-around at Oceanside Municipal Airport, Oceanside, Ca\u2026",
+        "aircraft_model": "172S"
+      }
+    ],
+    "likely_real": true
+  },
+  "battery": {
+    "ntsb_score": 83,
+    "status": "VALIDATED",
+    "n_accidents_searched": 201,
+    "n_matches": 146,
+    "top_matches": [
+      {
+        "accident_id": "20140522X53227",
+        "event_date": "05/21/14 00:00:00",
+        "total_score": 83,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn May 21, 2014, at 0810 eastern daylight time, a Cessna 182S, N182PJ, was substantially damaged during a runway overrun at Cecil County Airport (58M), Elkton, Maryland. The airline t\u2026",
+        "aircraft_model": "182"
+      },
+      {
+        "accident_id": "20110123X12244",
+        "event_date": "01/22/11 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHT \n\nOn January 22, 2011, about 1357 Pacific standard time, an amphibious float-equipped, Cessna T206H airplane, N142HF, sustained substantial damage when it nosed over during landing o\u2026",
+        "aircraft_model": "T206H"
+      },
+      {
+        "accident_id": "20130627X54046",
+        "event_date": "06/27/13 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn June 27, 2013, about 1020 mountain daylight time, a Cessna 172M, N4459R, was substantially damaged when it struck powerlines and terrain during an attempted emergency landing on a\u2026",
+        "aircraft_model": "172"
+      }
+    ],
+    "likely_real": true
+  },
+  "carburetor": {
+    "ntsb_score": 93,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 216,
+    "top_matches": [
+      {
+        "accident_id": "20120111X05220",
+        "event_date": "01/11/12 00:00:00",
+        "total_score": 93,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 11, 2012, at 1000 eastern standard time, a Cessna 150G, N4041J, operated by TENLE Aviation, was substantially damaged during an impact with terrain following a loss of en\u2026",
+        "aircraft_model": "150G"
+      },
+      {
+        "accident_id": "20101003X04946",
+        "event_date": "10/03/10 00:00:00",
+        "total_score": 85,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT \n\nOn October 3, 2010, about 1535 Pacific daylight time, a Cessna 310, N310XX, was substantially damaged when it impacted terrain shortly after takeoff from runway 22 at Catalina Airp\u2026",
+        "aircraft_model": "310"
+      },
+      {
+        "accident_id": "20100419X50320",
+        "event_date": "04/18/10 00:00:00",
+        "total_score": 83,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn April 18, 2010, about 1010 eastern daylight time, a Cessna 152, N5499B, was substantially damaged during a forced landing near Avon Park, Florida, following a loss of engine powe\u2026",
+        "aircraft_model": "152"
+      }
+    ],
+    "likely_real": true
+  },
+  "engine_left": {
+    "ntsb_score": 79,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 195,
+    "top_matches": [
+      {
+        "accident_id": "20080606X00807",
+        "event_date": "05/23/08 00:00:00",
+        "total_score": 79,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn May 23, 2008, about 1150 mountain standard time (MST), a Cessna P210N, N4753K, experienced a total loss of engine power during cruise flight and collided with the terrain during\u2026",
+        "aircraft_model": "P210N"
+      },
+      {
+        "accident_id": "20081012X85752",
+        "event_date": "10/12/08 00:00:00",
+        "total_score": 79,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 12, 2008, about 1050 eastern daylight time, a Cessna 172N, N734BL, was substantially damaged during a forced landing in an athletic field, shortly after takeoff from Kiss\u2026",
+        "aircraft_model": "172"
+      },
+      {
+        "accident_id": "20080213X00184",
+        "event_date": "02/08/08 00:00:00",
+        "total_score": 72,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "On February 7, 2008, at approximately 2027 central standard time, a Cessna TR182, N2225T, sustained substantial damage when it made a forced landing to a field after a loss of engine power.  The certi\u2026",
+        "aircraft_model": "TR182"
+      }
+    ],
+    "likely_real": true
+  },
+  "fuel_selector": {
+    "ntsb_score": 90,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 241,
+    "top_matches": [
+      {
+        "accident_id": "20091022X01008",
+        "event_date": "10/21/09 00:00:00",
+        "total_score": 90,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 21, 2009, at 1609 mountain daylight time, a Cessna T210G, N6869R, experienced a total loss of engine power during a southbound climb following a 1601 takeoff from the Pro\u2026",
+        "aircraft_model": "T210G"
+      },
+      {
+        "accident_id": "20100809X15745",
+        "event_date": "07/23/10 00:00:00",
+        "total_score": 90,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn July 23, 2010, at 1017 eastern daylight time (edt), a Cessna  U206F, N82531, sustained substantial damage when it was ditched in Lake Michigan about 5 miles west of Ludington, Mi\u2026",
+        "aircraft_model": "U206F"
+      },
+      {
+        "accident_id": "20080714X01030",
+        "event_date": "06/26/08 00:00:00",
+        "total_score": 83,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn June 26, 2008, about 1756 eastern daylight time, a Cessna 310R, N4912A, registered to a private individual and operated by Marco Aviation, Inc., experienced total loss of engine\u2026",
+        "aircraft_model": "310R"
+      }
+    ],
+    "likely_real": true
+  },
+  "voltage_regulator": {
+    "ntsb_score": 87,
+    "status": "VALIDATED",
+    "n_accidents_searched": 145,
+    "n_matches": 120,
+    "top_matches": [
+      {
+        "accident_id": "20140522X53227",
+        "event_date": "05/21/14 00:00:00",
+        "total_score": 87,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn May 21, 2014, at 0810 eastern daylight time, a Cessna 182S, N182PJ, was substantially damaged during a runway overrun at Cecil County Airport (58M), Elkton, Maryland. The airline t\u2026",
+        "aircraft_model": "182"
+      },
+      {
+        "accident_id": "20160906X24205",
+        "event_date": "08/05/16 00:00:00",
+        "total_score": 87,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "On August 5, 2016, about 1700 central daylight time, a Cessna P210N airplane, N323DC, was substantially damaged when the landing gear collapsed during landing on runway 19 (7,107 feet by 150 feet, con\u2026",
+        "aircraft_model": "P210N"
+      },
+      {
+        "accident_id": "20150820X11129",
+        "event_date": "08/18/15 00:00:00",
+        "total_score": 79,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 12,
+          "outcome": 7
+        },
+        "text_snippet": "On August 18, 2015, about 1025 central daylight time, a Cessna 182P, single-engine airplane, N6KW, departed the runway surface during a precautionary landing at the Bolivar Municipal Airport (M17), Bo\u2026",
+        "aircraft_model": "182P"
+      }
+    ],
+    "likely_real": true
+  },
+  "attitude_indicator": {
+    "ntsb_score": 97,
+    "status": "VALIDATED",
+    "n_accidents_searched": 259,
+    "n_matches": 245,
+    "top_matches": [
+      {
+        "accident_id": "20110118X70638",
+        "event_date": "01/18/11 00:00:00",
+        "total_score": 97,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 18, 2011, at 1307 eastern standard time (est), a Cessna 172S, N2100V, was substantially damaged when it collided with a tree, a travel trailer, and a pickup truck, after\u2026",
+        "aircraft_model": "172S"
+      },
+      {
+        "accident_id": "20150820X12626",
+        "event_date": "08/20/15 00:00:00",
+        "total_score": 89,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn August 19, 2015, about 2230 mountain daylight time, a Cessna 172P, N62731, was substantially damaged after it collided with mountainous terrain near Townsend, Montana. The private\u2026",
+        "aircraft_model": "172P"
+      },
+      {
+        "accident_id": "20101028X12506",
+        "event_date": "10/28/10 00:00:00",
+        "total_score": 87,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 28, 2010, about 0934 eastern daylight time, a Cessna 210A, N6655X, was substantially damaged when it impacted terrain while maneuvering near Aiken South Carolina. The cer\u2026",
+        "aircraft_model": "210A"
+      }
+    ],
+    "likely_real": true
+  },
+  "flaps": {
+    "ntsb_score": 82,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 205,
+    "top_matches": [
+      {
+        "accident_id": "20100809X15745",
+        "event_date": "07/23/10 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn July 23, 2010, at 1017 eastern daylight time (edt), a Cessna  U206F, N82531, sustained substantial damage when it was ditched in Lake Michigan about 5 miles west of Ludington, Mi\u2026",
+        "aircraft_model": "U206F"
+      },
+      {
+        "accident_id": "20110118X70638",
+        "event_date": "01/18/11 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 18, 2011, at 1307 eastern standard time (est), a Cessna 172S, N2100V, was substantially damaged when it collided with a tree, a travel trailer, and a pickup truck, after\u2026",
+        "aircraft_model": "172S"
+      },
+      {
+        "accident_id": "20080714X01030",
+        "event_date": "06/26/08 00:00:00",
+        "total_score": 78,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn June 26, 2008, about 1756 eastern daylight time, a Cessna 310R, N4912A, registered to a private individual and operated by Marco Aviation, Inc., experienced total loss of engine\u2026",
+        "aircraft_model": "310R"
+      }
+    ],
+    "likely_real": true
+  },
+  "fuel_pump": {
+    "ntsb_score": 90,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 240,
+    "top_matches": [
+      {
+        "accident_id": "20080609X00813",
+        "event_date": "05/17/08 00:00:00",
+        "total_score": 90,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHT \n\nOn May 17, 2008, about 1245 eastern daylight time (EDT), a Cessna 337A, N5382S, was substantially damaged when it impacted trees and terrain while attempting to divert to Eagles Ne\u2026",
+        "aircraft_model": "337A"
+      },
+      {
+        "accident_id": "20100621X53342",
+        "event_date": "06/21/10 00:00:00",
+        "total_score": 90,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn June 21, 2010, at 1257 eastern daylight time, a Cessna T210L, N30266, registered to Sterling Airways, Inc., and operated under contract by the United States Department of Agricul\u2026",
+        "aircraft_model": "T210L"
+      },
+      {
+        "accident_id": "20101025X62111",
+        "event_date": "10/25/10 00:00:00",
+        "total_score": 90,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 10
+        },
+        "text_snippet": "On October 25, 2010, about 0745 Pacific daylight time, a Cessna 340A, N68718, experienced an in-flight loss of control followed by an uncontrolled descent into mountainous terrain about 9 nautical mil\u2026",
+        "aircraft_model": "340A"
+      }
+    ],
+    "likely_real": true
+  },
+  "fuel_tank_left": {
+    "ntsb_score": 93,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 232,
+    "top_matches": [
+      {
+        "accident_id": "20080714X01030",
+        "event_date": "06/26/08 00:00:00",
+        "total_score": 93,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn June 26, 2008, about 1756 eastern daylight time, a Cessna 310R, N4912A, registered to a private individual and operated by Marco Aviation, Inc., experienced total loss of engine\u2026",
+        "aircraft_model": "310R"
+      },
+      {
+        "accident_id": "20091022X01008",
+        "event_date": "10/21/09 00:00:00",
+        "total_score": 89,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 12,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 21, 2009, at 1609 mountain daylight time, a Cessna T210G, N6869R, experienced a total loss of engine power during a southbound climb following a 1601 takeoff from the Pro\u2026",
+        "aircraft_model": "T210G"
+      },
+      {
+        "accident_id": "20080505X00597",
+        "event_date": "04/06/08 00:00:00",
+        "total_score": 85,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 12,
+          "outcome": 3
+        },
+        "text_snippet": "On April 6, 2008, at 1456 eastern daylight time, a Cessna P210N, N734JV, was substantially damaged when it crashed in a residential area while approaching Bowman Field (LOU), Louisville, Kentucky. The\u2026",
+        "aircraft_model": "P210N"
+      }
+    ],
+    "likely_real": true
+  },
+  "fuel_tank_right": {
+    "ntsb_score": 93,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 232,
+    "top_matches": [
+      {
+        "accident_id": "20080714X01030",
+        "event_date": "06/26/08 00:00:00",
+        "total_score": 93,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn June 26, 2008, about 1756 eastern daylight time, a Cessna 310R, N4912A, registered to a private individual and operated by Marco Aviation, Inc., experienced total loss of engine\u2026",
+        "aircraft_model": "310R"
+      },
+      {
+        "accident_id": "20091022X01008",
+        "event_date": "10/21/09 00:00:00",
+        "total_score": 89,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 12,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 21, 2009, at 1609 mountain daylight time, a Cessna T210G, N6869R, experienced a total loss of engine power during a southbound climb following a 1601 takeoff from the Pro\u2026",
+        "aircraft_model": "T210G"
+      },
+      {
+        "accident_id": "20080505X00597",
+        "event_date": "04/06/08 00:00:00",
+        "total_score": 85,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 12,
+          "outcome": 3
+        },
+        "text_snippet": "On April 6, 2008, at 1456 eastern daylight time, a Cessna P210N, N734JV, was substantially damaged when it crashed in a residential area while approaching Bowman Field (LOU), Louisville, Kentucky. The\u2026",
+        "aircraft_model": "P210N"
+      }
+    ],
+    "likely_real": true
+  },
+  "magnetos": {
+    "ntsb_score": 93,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 237,
+    "top_matches": [
+      {
+        "accident_id": "20120111X05220",
+        "event_date": "01/11/12 00:00:00",
+        "total_score": 93,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 11, 2012, at 1000 eastern standard time, a Cessna 150G, N4041J, operated by TENLE Aviation, was substantially damaged during an impact with terrain following a loss of en\u2026",
+        "aircraft_model": "150G"
+      },
+      {
+        "accident_id": "20111111X12732",
+        "event_date": "11/10/11 00:00:00",
+        "total_score": 89,
+        "dimension_scores": {
+          "component": 22,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn November 11, 2011, at 1615 mountain standard time a Cessna 337G, N337LC, registered to LAMP Ministry LLC, of New Haven, Michigan, was destroyed when it impacted the ground shortl\u2026",
+        "aircraft_model": "337G"
+      },
+      {
+        "accident_id": "20101025X62111",
+        "event_date": "10/25/10 00:00:00",
+        "total_score": 87,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 10,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "On October 25, 2010, about 0745 Pacific daylight time, a Cessna 340A, N68718, experienced an in-flight loss of control followed by an uncontrolled descent into mountainous terrain about 9 nautical mil\u2026",
+        "aircraft_model": "340A"
+      }
+    ],
+    "likely_real": true
+  },
+  "trim_system": {
+    "ntsb_score": 82,
+    "status": "VALIDATED",
+    "n_accidents_searched": 300,
+    "n_matches": 236,
+    "top_matches": [
+      {
+        "accident_id": "20100809X15745",
+        "event_date": "07/23/10 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn July 23, 2010, at 1017 eastern daylight time (edt), a Cessna  U206F, N82531, sustained substantial damage when it was ditched in Lake Michigan about 5 miles west of Ludington, Mi\u2026",
+        "aircraft_model": "U206F"
+      },
+      {
+        "accident_id": "20110118X70638",
+        "event_date": "01/18/11 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 18, 2011, at 1307 eastern standard time (est), a Cessna 172S, N2100V, was substantially damaged when it collided with a tree, a travel trailer, and a pickup truck, after\u2026",
+        "aircraft_model": "172S"
+      },
+      {
+        "accident_id": "20130213X43319",
+        "event_date": "02/13/13 00:00:00",
+        "total_score": 82,
+        "dimension_scores": {
+          "component": 15,
+          "altitude": 20,
+          "swiss_cheese": 20,
+          "cascade": 20,
+          "outcome": 7
+        },
+        "text_snippet": "HISTORY OF FLIGHTOn February 13, 2013, at 1314 eastern standard time, a Cessna T337C, N2576S, was destroyed when it impacted the ground in a farm pasture shortly after departure from New Smyrna Beach\u2026",
+        "aircraft_model": "T337C"
+      }
+    ],
+    "likely_real": true
+  },
+  "vacuum_pump": {
+    "ntsb_score": 73,
+    "status": "VALIDATED",
+    "n_accidents_searched": 252,
+    "n_matches": 197,
+    "top_matches": [
+      {
+        "accident_id": "20101028X12506",
+        "event_date": "10/28/10 00:00:00",
+        "total_score": 73,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 0,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn October 28, 2010, about 0934 eastern daylight time, a Cessna 210A, N6655X, was substantially damaged when it impacted terrain while maneuvering near Aiken South Carolina. The cer\u2026",
+        "aircraft_model": "210A"
+      },
+      {
+        "accident_id": "20110118X70638",
+        "event_date": "01/18/11 00:00:00",
+        "total_score": 73,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 0,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn January 18, 2011, at 1307 eastern standard time (est), a Cessna 172S, N2100V, was substantially damaged when it collided with a tree, a travel trailer, and a pickup truck, after\u2026",
+        "aircraft_model": "172S"
+      },
+      {
+        "accident_id": "20110704X21533",
+        "event_date": "07/01/11 00:00:00",
+        "total_score": 73,
+        "dimension_scores": {
+          "component": 30,
+          "altitude": 20,
+          "swiss_cheese": 0,
+          "cascade": 20,
+          "outcome": 3
+        },
+        "text_snippet": "HISTORY OF FLIGHT\n\nOn July 1, 2011, at approximately 1433 Atlantic standard time, a Cessna A185F, N8436Q, was substantially damaged when it impacted the waters of the Caribbean Sea near Yabucoa, Puert\u2026",
+        "aircraft_model": "A185F"
+      }
+    ],
+    "likely_real": true
+  }
+}
