@@ -29,13 +29,13 @@ The system identifies that the danger isn't the alternator failure itself — it
 ## Screenshots
 
 ### Results Dashboard
-![Results Dashboard](docs/screenshots/results_dashboard.png)
+![Results Dashboard](screenshots/results_dashboard.png)
 
 ### Cascade Timeline  
-![Cascade Timeline](docs/screenshots/cascade_timeline.png)
+![Cascade Timeline](screenshots/cascade_timeline.png)
 
 ### Validation & Evidence
-![Validation Evidence](docs/screenshots/validation_evidence.png)
+![Validation Evidence](screenshots/validation_evidence.png)
 
 ---
 
