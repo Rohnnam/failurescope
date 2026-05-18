@@ -173,7 +173,7 @@ Natural language input
 ```
 23 edge case scenarios · 19 PASS · 4 FAIL · 0 ERRORS
 
-4 documented limitations (not bugs):
+4 documented limitations:
   [04] Dual failure: L3 snapshot sees clean state before cascade fires
   [05] Battery injection: model reads low voltage, physics gives pilot recovery time  
   [16] Attitude indicator alone ≠ R014 (requires vacuum_pump fail + IMC)
@@ -221,7 +221,7 @@ failurescope/
 
 ## Related Work
 
-- **IGLA** — Physics-inspired LLM safety classifier (submitted COLM workshops)
+- **IGLA** — Physics-inspired LLM safety classifier
 - **THMI** — Transformer hierarchical modeling (SSRN + Zenodo, workshop review)
 
 ---
