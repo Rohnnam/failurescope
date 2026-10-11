@@ -219,13 +219,6 @@ failurescope/
 
 ---
 
-## Related Work
-
-- **IGLA** — Physics-inspired LLM safety classifier
-- **THMI** — Transformer hierarchical modeling (SSRN + Zenodo, workshop review)
-
----
-
 ## License
 
 MIT
